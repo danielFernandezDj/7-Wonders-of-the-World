@@ -1,50 +1,91 @@
 html {
     height: 100%;
     width: 100%;
-  }
-  
-  * {
+}
+
+* {
     box-sizing: border-box;
-  }
-  
-  body {
+}
+
+body {
     background-color: #1c1d1f;
-    /* border: 2px solid black; */
+    color: #f5f5f5;
     width: 98vw;
     height: 98vh;
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  /* ••••••••••••••••••• HUD ••••••••••••••••••• */
-  #aside-menu {
-    border: 2px solid blue;
+}
+
+/* ••••••••••••••••••• HUD ••••••••••••••••••• */
+
+#heart-live {
+    /* border: 2px solid red; */
+    position: relative;
+    top: 140px;
+    left: 18px;
+    z-index: 2;
+}
+
+#menu-h2-live {
+    background-color: aliceblue;
+    /* color: #1c1d1f; */
+    color: rgb(244, 67, 40);
     display: flex;
-    flex-flow: wrap column;
-    max-width: 60px;
-    height: auto;
-    margin: 5px;
-    padding: 5px;
-  }
-  
-  #aside-menu-point {
-    border: 2px solid rgb(0, 255, 26);
-    width: 40px;
-    height: 40px;
-  }
-  
-  #section {
-    border: 2px solid white;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    top: 85px;
+    right: 30px;
+    z-index: -1;
+    width: 50px;
+    height: 50px;
+    padding: 0 20px;
+    padding-right: 50px;
+}
+
+/* Point Section. */
+#point-text {
+    /* border: 2px solid red; */
+    position: relative;
+    top: 185px;
+    right: -290px;
+    z-index: 2;
+}
+
+#point-number {
+    background-color: aliceblue;
+    /* color: #1c1d1f; */
+    color: rgb(244, 67, 40);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    border-radius: 10px;
+    position: relative;
+    top: 265px;
+    right: -325px;
+    z-index: -1;
+    width: 50px;
+    height: 50px;
+    padding: 0 20px;
+    padding-left: 50px;
+}
+
+
+/* Main section start here */
+#section {
+    border: 1px solid #f5f5f562;
     border-radius: 10px;
     display: flex;
     flex-flow: wrap column;
     width: auto;
     height: auto;
     padding: 10px;
-  }
-  
-  #card {
+    z-index: -3;
+}
+
+#card {
     /* border: 1px solid #ff0000; */
     border-radius: 10px;
     display: flex;
@@ -56,17 +97,21 @@ html {
     min-height: 360px;
     overflow: hidden;
     /* position: fixed; */
-  }
-  
-  #text-h3-div {
+}
+
+#text-h3-div {
     color: aliceblue;
     text-align: center;
     text-indent: 20px;
     width: 350px;
     margin: 0;
-  }
-  
-  #hud-button {
+}
+
+h3 {
+    margin: 0;
+}
+
+#hud-button {
     /* border: 1px solid #1500ff;  */
     border-radius: 10px;
     display: flex;
@@ -77,9 +122,9 @@ html {
     width: 100%;
     height: auto;
     flex-grow: 2;
-  }
-  
-  .button-option {
+}
+
+.button-option {
     background-color: cadetblue;
     color: #181534;
     border-radius: 6px;
@@ -87,16 +132,14 @@ html {
     width: 40%;
     height: 40px;
     flex-grow: 2;
-  
-  }
-  
-  .storage-images {
+
+}
+
+.storage-images {
     display: none;
     border-radius: 10px;
     width: 100%;
     height: 100%;
-    z-index: 5;
-  }
-  
-  
-  
+    position: relative;
+    z-index: 1;
+}
