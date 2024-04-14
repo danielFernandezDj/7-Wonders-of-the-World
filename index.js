@@ -42,5 +42,24 @@ function Egypt() {
 Egypt();
 
 
+// Time var section.
+let timeVar = document.getElementById("time-var");
+let timeProgress = document.getElementById('time-var-progress')
 
+let newTime = parseFloat(window.getComputedStyle(timeVar).width) 
 
+function countdown() {
+    let i = newTime;
+    let interval = setInterval(function() {
+        timeVar.style.width = i + "px"; // Set the width of timeVar
+        console.log(i);
+        i--;
+        if (i < 0) {
+            clearInterval(interval);
+            console.log("Blast off!");
+            // console.log(timeVar);
+        }
+    }, 50); // Adjust the delay here (in milliseconds)
+}
+
+countdown();

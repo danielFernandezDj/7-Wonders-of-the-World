@@ -59,12 +59,12 @@ body {
     /* color: #1c1d1f; */
     color: rgb(244, 67, 40);
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     border-radius: 10px;
     position: relative;
     top: 265px;
-    right: -325px;
+    right: -320px;
     z-index: -1;
     width: 50px;
     height: 50px;
@@ -72,10 +72,28 @@ body {
     padding-left: 50px;
 }
 
+/* Var section */
+#time-var {
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    height: 20px;
+
+  }
+  
+  #time-var-progress {
+    background-color: #4caf50;
+    border-radius: 10px;
+    /* position: relative; */
+    width: 100%;
+    height: auto;
+  }
+  
 
 /* Main section start here */
 #section {
-    border: 1px solid #f5f5f562;
+    /* border: 1px solid #f5f5f562; */
     border-radius: 10px;
     display: flex;
     flex-flow: wrap column;
@@ -83,6 +101,8 @@ body {
     height: auto;
     padding: 10px;
     z-index: -3;
+    position: relative;
+    top: -120px;
 }
 
 #card {
@@ -141,5 +161,6 @@ h3 {
     width: 100%;
     height: 100%;
     position: relative;
-    z-index: 1;
+    z-index: 1; 
 }
+
