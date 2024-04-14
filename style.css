@@ -78,18 +78,17 @@ body {
     border-radius: 10px;
     position: relative;
     width: 300px;
-    height: 20px;
+    height: 50px;
 
-  }
-  
-  #time-var-progress {
+}
+
+#time-var-progress {
     background-color: #4caf50;
     border-radius: 10px;
-    /* position: relative; */
-    width: 100%;
-    height: auto;
-  }
-  
+    width: 300px;
+    height:  100%;
+}
+
 
 /* Main section start here */
 #section {
@@ -161,6 +160,5 @@ h3 {
     width: 100%;
     height: 100%;
     position: relative;
-    z-index: 1; 
+    z-index: 1;
 }
-
