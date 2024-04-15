@@ -14,6 +14,12 @@ const inputTwo = document.getElementById('option-two')
 const inputThree = document.getElementById('option-three')
 const inputFour = document.getElementById('option-four')
 
+// Add random color to the inputs
+// Color array       =>  1-red,    2-yellow,   3-blue,    4-green. 
+let randomInputColor = ['#ff839d', '#ffd77c', '#66b5ef', '#74cdcd',]
+let randomInputArray = [inputOne, inputTwo, inputThree, inputFour,]
+
+
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
 
@@ -62,8 +68,7 @@ function countdown() {
         if (i < 0) {
             clearInterval(interval);
             timeOut = true
-            // Live condition.
-            livePoints.textContent -= "1"
+            livePoints.textContent -= "1" // Live condition.
             console.log("Blast off!");
         }
         if (i === 150) {
