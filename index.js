@@ -39,13 +39,17 @@ function applyUniqueColorsToButtons() {
 let winCondition = false;
 let timeOut = false;
 let speedTimer = 50;
+console.log(winCondition)
 
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
+let startPoint = document.getElementById('point-number')
 
 
 //  GamePlay option 1-Egypt ••••••••••••••••••••••••••••••••••••
 function Egypt() {
+  timeOut = false;
+  winCondition = false;
   // Call the function to apply unique colors to buttons
   applyUniqueColorsToButtons();
   // display the image.
@@ -58,19 +62,25 @@ function Egypt() {
   inputThree.textContent = 'India';
   inputFour.textContent = 'Pakistan';
 
+  // Reduce Live condition.
   [inputTwo, inputThree, inputFour].forEach(function (input) {
     input.addEventListener('click', function (event) {
       console.log("Button" + event.target.id + "is pressed.");
 
-      // Reduce Live condition.
       if (livePoints.textContent > 0) {
         livePoints.textContent--
-      } else { livePoints.textContent = 0; }
+      } else { livePoints.textContent = 0; winCondition = false;}
       console.log(livePoints.textContent)
     });
   });
 
+  // Increase Live condition.
+  let livePlusOne = 0
   inputOne.addEventListener('click', () => {
+    if (livePlusOne === 0) {
+      livePlusOne += 1
+      startPoint.textContent++
+    }
     winCondition = true;
     console.log('Win Condition is TRUE!')
   })
@@ -92,6 +102,7 @@ function countdown() {
     if (i < 0) {
       clearInterval(interval);
       timeOut = true
+      winCondition = false;
       livePoints.textContent -= "1" // Live condition.
       console.log("Blast off!");
     }
@@ -101,20 +112,17 @@ function countdown() {
     // Reduce the time speed wen the player get Points.
   }, speedTimer);
 }
-
-// function randomCard () {
-//     switch {}
-// }
-// countdown();
+countdown();
 
 
 // TODO: 
-// Lose conditions:
+// // Lose conditions:
 // If you select the wrong option you lose 1live; => and change to a random card.
 // if the time is 0 you lose 1live; => and change to a random card.
+// then Pop Up your Lose.
 
 // Win condition:
-// You get one star if player select the right option;
+// // You get one star if player select the right option;
 // => then delete this card from the array - and change to a random card. 
 // Player wins wen get the total of 7 stars.
 // => then Pop Up your Win
