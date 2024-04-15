@@ -14,9 +14,14 @@ const inputTwo = document.getElementById('option-two')
 const inputThree = document.getElementById('option-three')
 const inputFour = document.getElementById('option-four')
 
+// Live Points selection.
+let livePoints = document.getElementById('menu-h2-live')
+
+
 // Variables.
-let winButton = false;
+let winCondition = false;
 let timeOut = false;
+let speedTimer = 50;
 
 //  Input! ••••••••••••••••••••••••••••••••••••
 function Egypt() {
@@ -36,11 +41,12 @@ function Egypt() {
   });
   
   inputOne.addEventListener('click', () => {
-    winButton = true; 
-    console.log(`The win button was press it =  ${winButton}`)
+    winCondition = true;
+    console.log('Win Condition is TRUE!')
   })
 }
 Egypt();
+
 
 
 // Time var section.
@@ -56,19 +62,24 @@ function countdown() {
         if (i < 0) {
             clearInterval(interval);
             timeOut = true
+            // Live condition.
+            livePoints.textContent -= "1"
             console.log("Blast off!");
         }
         if (i === 150) {
             timeProgress.style.backgroundColor = 'red'
         } 
         // Reduce the time speed wen the player get Points.
-    }, 50); // Adjust the delay here (in milliseconds)
+    }, speedTimer); 
 }
 
+// function randomCard () {
+//     switch {}
+// }
 // countdown();
 
 
-// TODO: add a video button for the card; example: a youtube video from Egypt.
+// TODO: 
 // Lose conditions:
 // If you select the wrong option you lose 1live; => and change to a random card.
 // if the time is 0 you lose 1live; => and change to a random card.
