@@ -21,7 +21,6 @@ const inputTwo = document.getElementById('option-two')
 const inputThree = document.getElementById('option-three')
 const inputFour = document.getElementById('option-four')
 
-
 // Function to random Inputs-Color.
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -58,13 +57,14 @@ let startPoint = document.getElementById('point-number')
 // todo  To select a Random card when the game START.
 // Select all functions in a 'array'.
 let arrayCardFunction = [Egypt, Iraq, Greece,]
+let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
 
-// When the game start => select one Card.
+// When the game starts or a new card is selected
 if (start === true) {
   start = false;
-  console.log(`Strat is ${start}`)
-  let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-  selectRandomFunction()
+  console.log(`Strat is ${start}`);
+  selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
+  selectRandomFunction();
 }
 
 
@@ -87,42 +87,48 @@ function Egypt() {
   inputThree.textContent = 'India';
   inputFour.textContent = 'Pakistan';
 
-  // Increase Live condition.
-  let livePlusOne = 0
-  inputOne.addEventListener('click', () => {
-    stopTimer = true;
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
-
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Egypt);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-      }
-      // Delete Image:
-      imgEgypt.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
-  
-  // Reduce Live condition.
-  if (winCondition === false) {
-    [inputTwo, inputThree, inputFour].forEach(function (input) {
-      input.addEventListener('click', function (event) {
-        console.log(`you lose on Star point`);
+  // Reduce Live condition only if selectRandomFunction is equal to 'Egypt'.
+  [inputTwo, inputThree, inputFour].forEach(function (input) {
+    input.addEventListener('click', function (event) {
+      console.log(`you lose on Star point`);
+      if (selectRandomFunction === Egypt) {
 
         if (livePoints.textContent > 0) {
-          livePoints.textContent--
-        } else { livePoints.textContent = 0; winCondition = false; }
-        console.log(livePoints.textContent)
-      });
+          livePoints.textContent--;
+        } else {
+          livePoints.textContent = 0;
+          winCondition = false;
+        }
+        console.log(livePoints.textContent);
+      }
     });
-  }
+  });
+
+  // Increase Star-Point condition.
+  let livePlusOne = 0
+  inputOne.addEventListener('click', () => {
+    if (selectRandomFunction === Egypt) {
+      stopTimer = true;
+      if (livePlusOne === 0) {
+        livePlusOne += 1
+        startPoint.textContent++
+
+        // Delete this card from the array.
+        let index = arrayCardFunction.indexOf(Egypt);
+        if (index !== -1) {
+          arrayCardFunction.splice(index, 1);
+          console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+          let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+          selectRandomFunction()
+        }
+        // Delete Image:
+        imgEgypt.style.display = "none"
+      }
+      winCondition = true;
+      console.log('Win Condition is TRUE!')
+    }
+  })
+
 
 }  //Egypt();
 
@@ -145,42 +151,48 @@ function Iraq() {
   inputThree.textContent = 'Iraq';
   inputFour.textContent = 'Roma';
 
-  // Increase Live condition.
-  let livePlusOne = 0
-  inputThree.addEventListener('click', () => {
-    stopTimer = true;
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
-
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Iraq);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-      }
-      // Delete Image:
-      imgIraq.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
-
-  // Reduce Live condition.
-  if (winCondition === false) {
-    [inputOne, inputTwo, inputFour].forEach(function (input) {
-      input.addEventListener('click', function (event) {
+  // Reduce Live condition only if selectRandomFunction is equal to 'Iraq'.
+  // If selectRandomFunction is Egypt, add event listeners
+  [inputOne, inputTwo, inputFour].forEach(function (input) {
+    input.addEventListener('click', function (event) {
+      if (selectRandomFunction === Iraq) {
         console.log(`you lose on Star point`);
 
         if (livePoints.textContent > 0) {
           livePoints.textContent--
-        } else { livePoints.textContent = 0; winCondition = false; }
+        } else {
+          livePoints.textContent = 0; winCondition = false;
+        }
         console.log(livePoints.textContent)
-      });
+      }
     });
-  }
+  });
+
+  // Increase Star-Point condition.
+  let livePlusOne = 0
+  inputThree.addEventListener('click', () => {
+    if (selectRandomFunction === Iraq) {
+      stopTimer = true;
+      if (livePlusOne === 0) {
+        livePlusOne += 1
+        startPoint.textContent++
+
+        // Delete this card from the array.
+        let index = arrayCardFunction.indexOf(Iraq);
+        if (index !== -1) {
+          arrayCardFunction.splice(index, 1);
+          console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+          let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+          selectRandomFunction()
+        }
+        // Delete Image:
+        imgIraq.style.display = "none"
+      }
+      winCondition = true;
+      console.log('Win Condition is TRUE!')
+    }
+  })
+
 }  // Iraq();
 
 // ! GamePlay option 3-Greece ••••••••••••••••••••••••••••••••••••
@@ -202,42 +214,47 @@ function Greece() {
   inputThree.textContent = 'Romania';
   inputFour.textContent = 'Libya';
 
-  // Increase Live condition.
-  let livePlusOne = 0
-  inputTwo.addEventListener('click', () => {
-    stopTimer = true;
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
-
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Greece);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-      }
-      // Delete Image:
-      imgGreece.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
-
-  // Reduce Live condition.
-  if (winCondition === false) {
-    [inputOne, inputThree, inputFour].forEach(function (input) {
-      input.addEventListener('click', function (event) {
+  // Reduce Live condition only if selectRandomFunction is equal to 'Greece'.
+  // If selectRandomFunction is Egypt, add event listeners
+  [inputOne, inputThree, inputFour].forEach(function (input) {
+    input.addEventListener('click', function (event) {
+      if (selectRandomFunction === Greece) {
         console.log("Button" + event.target.id + "is pressed.");
 
         if (livePoints.textContent > 0) {
           livePoints.textContent--
-        } else { livePoints.textContent = 0; winCondition = false; }
+        } else {
+          livePoints.textContent = 0; winCondition = false;
+        }
         console.log(livePoints.textContent)
-      });
+      }
     });
-  }
+  });
+
+  // Increase Star-Point condition.
+  let livePlusOne = 0
+  inputTwo.addEventListener('click', () => {
+    if (selectRandomFunction === Greece) {
+      stopTimer = true;
+      if (livePlusOne === 0) {
+        livePlusOne += 1
+        startPoint.textContent++
+
+        // Delete this card from the array.
+        let index = arrayCardFunction.indexOf(Greece);
+        if (index !== -1) {
+          arrayCardFunction.splice(index, 1);
+          console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+          let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+          selectRandomFunction()
+        }
+        // Delete Image:
+        imgGreece.style.display = "none"
+      }
+      winCondition = true;
+      console.log('Win Condition is TRUE!')
+    }
+  })
 
 } // Greece();
 
