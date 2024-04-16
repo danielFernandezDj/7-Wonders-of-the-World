@@ -58,7 +58,6 @@ let startPoint = document.getElementById('point-number')
 // todo  To select a Random card when the game START.
 // Select all functions in a 'array'.
 let arrayCardFunction = [Egypt, Iraq, Greece,]
-let index = arrayCardFunction.indexOf(Egypt);
 
 // When the game start => select one Card.
 if (start === true) {
@@ -67,12 +66,6 @@ if (start === true) {
   let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
   selectRandomFunction()
 }
-
-// ? Testin the delecte function!
-inputFour.addEventListener('click', () => {
-  let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-  selectRandomFunction()
-})
 
 
 // ! GamePlay option 1-Egypt ••••••••••••••••••••••••••••••••••••
@@ -87,24 +80,12 @@ function Egypt() {
   // display the image.
   imgEgypt.style.display = "block"
   // display the new text.
-  textH3.textContent = '"The Great Pyramid of Giza"'
+  textH3.textContent = "The Great Pyramid of Giza!"
 
   inputOne.textContent = 'Egypt';
   inputTwo.textContent = 'Vegas';
   inputThree.textContent = 'India';
   inputFour.textContent = 'Pakistan';
-
-  // Reduce Live condition.
-  [inputTwo, inputThree, inputFour].forEach(function (input) {
-    input.addEventListener('click', function (event) {
-      console.log(`you lose on Star point`);
-
-      if (livePoints.textContent > 0) {
-        livePoints.textContent--
-      } else { livePoints.textContent = 0; winCondition = false; }
-      console.log(livePoints.textContent)
-    });
-  });
 
   // Increase Live condition.
   let livePlusOne = 0
@@ -114,21 +95,38 @@ function Egypt() {
       livePlusOne += 1
       startPoint.textContent++
 
-        // todo : Delete this card from the array.
-        arrayCardFunction.slice(index, 1);
-        console.log(`Arry Function has = ${arrayCardFunction.length} functions inside!`)
+      // Delete this card from the array.
+      let index = arrayCardFunction.indexOf(Egypt);
+      if (index !== -1) {
+        arrayCardFunction.splice(index, 1);
+        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
         let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
         selectRandomFunction()
-        // Disconnect :
-        imgEgypt.style.display = "none"
-
+      }
+      // Delete Image:
+      imgEgypt.style.display = "none"
     }
     winCondition = true;
     console.log('Win Condition is TRUE!')
   })
+  
+  // Reduce Live condition.
+  if (winCondition === false) {
+    [inputTwo, inputThree, inputFour].forEach(function (input) {
+      input.addEventListener('click', function (event) {
+        console.log(`you lose on Star point`);
+
+        if (livePoints.textContent > 0) {
+          livePoints.textContent--
+        } else { livePoints.textContent = 0; winCondition = false; }
+        console.log(livePoints.textContent)
+      });
+    });
+  }
+
 }  //Egypt();
 
-// ! GamePlay option 1-Iraq ••••••••••••••••••••••••••••••••••••
+// ! GamePlay option 2-Iraq ••••••••••••••••••••••••••••••••••••
 function Iraq() {
   timeOut = false;
   winCondition = false;
@@ -140,24 +138,12 @@ function Iraq() {
   // display the image.
   imgIraq.style.display = "block"
   // display the new text.
-  textH3.textContent = "The Hanging Gardens of Babylon";
+  textH3.textContent = "The Hanging Gardens of Babylon!";
 
   inputOne.textContent = 'Brazil';
   inputTwo.textContent = 'Italia';
   inputThree.textContent = 'Iraq';
   inputFour.textContent = 'Roma';
-
-  // Reduce Live condition.
-  [inputOne, inputTwo, inputFour].forEach(function (input) {
-    input.addEventListener('click', function (event) {
-      console.log("Button" + event.target.id + "is pressed.");
-
-      if (livePoints.textContent > 0) {
-        livePoints.textContent--
-      } else { livePoints.textContent = 0; winCondition = false; }
-      console.log(livePoints.textContent)
-    });
-  });
 
   // Increase Live condition.
   let livePlusOne = 0
@@ -166,13 +152,38 @@ function Iraq() {
     if (livePlusOne === 0) {
       livePlusOne += 1
       startPoint.textContent++
+
+      // Delete this card from the array.
+      let index = arrayCardFunction.indexOf(Iraq);
+      if (index !== -1) {
+        arrayCardFunction.splice(index, 1);
+        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+        selectRandomFunction()
+      }
+      // Delete Image:
+      imgIraq.style.display = "none"
     }
     winCondition = true;
     console.log('Win Condition is TRUE!')
   })
+
+  // Reduce Live condition.
+  if (winCondition === false) {
+    [inputOne, inputTwo, inputFour].forEach(function (input) {
+      input.addEventListener('click', function (event) {
+        console.log(`you lose on Star point`);
+
+        if (livePoints.textContent > 0) {
+          livePoints.textContent--
+        } else { livePoints.textContent = 0; winCondition = false; }
+        console.log(livePoints.textContent)
+      });
+    });
+  }
 }  // Iraq();
 
-// ! GamePlay option 1-Iraq ••••••••••••••••••••••••••••••••••••
+// ! GamePlay option 3-Greece ••••••••••••••••••••••••••••••••••••
 function Greece() {
   timeOut = false;
   winCondition = false;
@@ -184,24 +195,12 @@ function Greece() {
   // display the image.
   imgGreece.style.display = "block"
   // display the new text.
-  textH3.textContent = "Statue of Zeus at Olympia";
+  textH3.textContent = "The Statue of Zeus at Olympia!";
 
   inputOne.textContent = 'Syria';
   inputTwo.textContent = 'Greece';
   inputThree.textContent = 'Romania';
   inputFour.textContent = 'Libya';
-
-  // Reduce Live condition.
-  [inputOne, inputThree, inputFour].forEach(function (input) {
-    input.addEventListener('click', function (event) {
-      console.log("Button" + event.target.id + "is pressed.");
-
-      if (livePoints.textContent > 0) {
-        livePoints.textContent--
-      } else { livePoints.textContent = 0; winCondition = false; }
-      console.log(livePoints.textContent)
-    });
-  });
 
   // Increase Live condition.
   let livePlusOne = 0
@@ -210,10 +209,36 @@ function Greece() {
     if (livePlusOne === 0) {
       livePlusOne += 1
       startPoint.textContent++
+
+      // Delete this card from the array.
+      let index = arrayCardFunction.indexOf(Greece);
+      if (index !== -1) {
+        arrayCardFunction.splice(index, 1);
+        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+        selectRandomFunction()
+      }
+      // Delete Image:
+      imgGreece.style.display = "none"
     }
     winCondition = true;
     console.log('Win Condition is TRUE!')
   })
+
+  // Reduce Live condition.
+  if (winCondition === false) {
+    [inputOne, inputThree, inputFour].forEach(function (input) {
+      input.addEventListener('click', function (event) {
+        console.log("Button" + event.target.id + "is pressed.");
+
+        if (livePoints.textContent > 0) {
+          livePoints.textContent--
+        } else { livePoints.textContent = 0; winCondition = false; }
+        console.log(livePoints.textContent)
+      });
+    });
+  }
+
 } // Greece();
 
 
