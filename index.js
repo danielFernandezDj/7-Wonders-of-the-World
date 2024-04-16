@@ -2,8 +2,15 @@
 const cardStorage = document.getElementById('card')
 
 // Select the Images in the storage.
+// Egypt
 const imgEgypt = document.getElementById("egypt")
 cardStorage.appendChild(imgEgypt)
+// Iraq
+const imgIraq = document.getElementById("iraq")
+cardStorage.appendChild(imgIraq)
+// Greece
+const imgGreece = document.getElementById("greece")
+cardStorage.appendChild(imgGreece)
 
 // Select Q&A Text.
 const textH3 = document.getElementById('h3')
@@ -50,6 +57,9 @@ let startPoint = document.getElementById('point-number')
 function Egypt() {
   timeOut = false;
   winCondition = false;
+
+  // In this part it will be music and soundFX. 
+
   // Call the function to apply unique colors to buttons
   applyUniqueColorsToButtons();
   // display the image.
@@ -84,12 +94,97 @@ function Egypt() {
     winCondition = true;
     console.log('Win Condition is TRUE!')
   })
-}
-Egypt();
+} // Egypt();
+
+//  GamePlay option 1-Iraq ••••••••••••••••••••••••••••••••••••
+function Iraq() {
+  timeOut = false;
+  winCondition = false;
+
+  // In this part it will be music and soundFX. 
+
+  // Call the function to apply unique colors to buttons
+  applyUniqueColorsToButtons();
+  // display the image.
+  imgIraq.style.display = "block"
+  // display the new text.
+  textH3.textContent = 'From what country is "The Hanging Gardens of Babylon"'
+
+  inputOne.textContent = 'Brazil';
+  inputTwo.textContent = 'Italia';
+  inputThree.textContent = 'Iraq';
+  inputFour.textContent = 'Roma';
+
+  // Reduce Live condition.
+  [inputOne, inputTwo, inputFour].forEach(function (input) {
+    input.addEventListener('click', function (event) {
+      console.log("Button" + event.target.id + "is pressed.");
+
+      if (livePoints.textContent > 0) {
+        livePoints.textContent--
+      } else { livePoints.textContent = 0; winCondition = false;}
+      console.log(livePoints.textContent)
+    });
+  });
+
+  // Increase Live condition.
+  let livePlusOne = 0
+  inputThree.addEventListener('click', () => {
+    if (livePlusOne === 0) {
+      livePlusOne += 1
+      startPoint.textContent++
+    }
+    winCondition = true;
+    console.log('Win Condition is TRUE!')
+  })
+} // Iraq();
+
+//  GamePlay option 1-Iraq ••••••••••••••••••••••••••••••••••••
+function Greece() {
+  timeOut = false;
+  winCondition = false;
+
+  // In this part it will be music and soundFX. 
+
+  // Call the function to apply unique colors to buttons
+  applyUniqueColorsToButtons();
+  // display the image.
+  imgGreece.style.display = "block"
+  // display the new text.
+  textH3.textContent = 'From what country is "The Hanging Gardens of Babylon"'
+
+  inputOne.textContent = 'Brazil';
+  inputTwo.textContent = 'Italia';
+  inputThree.textContent = 'Iraq';
+  inputFour.textContent = 'Roma';
+
+  // Reduce Live condition.
+  [inputOne, inputThree, inputFour].forEach(function (input) {
+    input.addEventListener('click', function (event) {
+      console.log("Button" + event.target.id + "is pressed.");
+
+      if (livePoints.textContent > 0) {
+        livePoints.textContent--
+      } else { livePoints.textContent = 0; winCondition = false;}
+      console.log(livePoints.textContent)
+    });
+  });
+
+  // Increase Live condition.
+  let livePlusOne = 0
+  inputTwo.addEventListener('click', () => {
+    if (livePlusOne === 0) {
+      livePlusOne += 1
+      startPoint.textContent++
+    }
+    winCondition = true;
+    console.log('Win Condition is TRUE!')
+  })
+} Greece();
 
 
 
-// Time var section.
+// Time var section ••••••••••••••••••••••••••••••••••••
 let timeVar = document.getElementById("time-var");
 let timeProgress = document.getElementById('time-var-progress')
 
@@ -99,7 +194,7 @@ function countdown() {
     timeProgress.style.width = i + "px"; // Set the width of timeVar
     console.log(i);
     i--;
-    if (i < 0) {
+    if (i < 18) {
       clearInterval(interval);
       timeOut = true
       winCondition = false;
@@ -115,11 +210,12 @@ function countdown() {
 countdown();
 
 
-// TODO: 
+// TODO: add the poUp action
 // // Lose conditions:
-// If you select the wrong option you lose 1live; => and change to a random card.
-// if the time is 0 you lose 1live; => and change to a random card.
-// then Pop Up your Lose.
+// If you select the wrong option you lose 1-live; => and change to a random card.
+// if the time is 0 you lose 1-live; => and change to a random card.
+// if your Live points is == 0, top game =>
+// then Pop-Up your Lose.
 
 // Win condition:
 // // You get one star if player select the right option;
