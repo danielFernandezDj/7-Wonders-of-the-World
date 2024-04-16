@@ -124,6 +124,10 @@ body {
     /* position: fixed; */
 }
 
+h3 {
+    margin: 0;
+}
+
 #text-h3-div {
     color: aliceblue;
     text-align: center;
@@ -132,8 +136,8 @@ body {
     margin: 0;
 }
 
-h3 {
-    margin: 0;
+#h3Q {
+    color: lightsalmon;
 }
 
 /* Button Styling section •••••••••••••••••••••••• */

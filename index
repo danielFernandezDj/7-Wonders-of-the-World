@@ -58,7 +58,6 @@ let startPoint = document.getElementById('point-number')
 // todo  To select a Random card when the game START.
 // Select all functions in a 'array'.
 let arrayCardFunction = [Egypt, Iraq, Greece,]
-let index = arrayCardFunction.indexOf(Egypt);
 
 // When the game start => select one Card.
 if (start === true) {
@@ -68,11 +67,7 @@ if (start === true) {
   selectRandomFunction()
 }
 
-// ? Testin the delecte function!
-inputFour.addEventListener('click', () => {
-  let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-  selectRandomFunction()
-})
+
 
 
 // ! GamePlay option 1-Egypt ••••••••••••••••••••••••••••••••••••
@@ -97,10 +92,15 @@ function Egypt() {
   // Reduce Live condition.
   [inputTwo, inputThree, inputFour].forEach(function (input) {
     input.addEventListener('click', function (event) {
-      console.log(`you lose on Star point`);
+      console.log("Button" + event.target.id + "is pressed.");
 
       if (livePoints.textContent > 0) {
         livePoints.textContent--
+
+        // Delete this card from the array.
+        arrayCardFunction.slice(0);
+        co
+        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
       } else { livePoints.textContent = 0; winCondition = false; }
       console.log(livePoints.textContent)
     });
@@ -113,15 +113,6 @@ function Egypt() {
     if (livePlusOne === 0) {
       livePlusOne += 1
       startPoint.textContent++
-
-        // todo : Delete this card from the array.
-        arrayCardFunction.slice(index, 1);
-        console.log(`Arry Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-        // Disconnect :
-        imgEgypt.style.display = "none"
-
     }
     winCondition = true;
     console.log('Win Condition is TRUE!')
@@ -140,7 +131,7 @@ function Iraq() {
   // display the image.
   imgIraq.style.display = "block"
   // display the new text.
-  textH3.textContent = "The Hanging Gardens of Babylon";
+  textH3.textContent = 'From what country is "The Hanging Gardens of Babylon"'
 
   inputOne.textContent = 'Brazil';
   inputTwo.textContent = 'Italia';
@@ -184,7 +175,7 @@ function Greece() {
   // display the image.
   imgGreece.style.display = "block"
   // display the new text.
-  textH3.textContent = "Statue of Zeus at Olympia";
+  textH3.textContent = 'From what country is "The Hanging Gardens of Babylon"'
 
   inputOne.textContent = 'Syria';
   inputTwo.textContent = 'Greece';
@@ -247,7 +238,7 @@ function countdown() {
     // Reduce the time speed wen the player get Points.
   }, speedTimer);
 }
-// countdown();
+countdown();
 
 
 // TODO: add the poUp action
