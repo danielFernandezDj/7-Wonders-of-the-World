@@ -5,8 +5,8 @@ The Seven Wonders of the Ancient World are:
 <!-- The Statue of Zeus at Olympia (Greece) -->
 <!-- The Temple of Artemis at Ephesus (Turkey) -->
 <!-- The Mausoleum at Halicarnassus (Turkey) -->
-The Colossus of Rhodes (Greece)
-The Lighthouse of Alexandria (Egypt)
+<!-- The Colossus of Rhodes (Greece) -->
+<!-- The Lighthouse of Alexandria (Egypt) -->
 
 ........................................
 
