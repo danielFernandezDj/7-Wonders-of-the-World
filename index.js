@@ -13,25 +13,31 @@ cardStorage.appendChild(imgGreece)
 // Select Q&A Text.
 const textH3 = document.getElementById('h3Q')
 
-const inputOne = document.createElement('button')
-inputOne.textContent = 'Input is append';
-inputOne.className = 'button-style';
-inputOne.appendChild(hudButtonDiv);
 
+// Declare the input variables in the outer scope.
+let inputOne, inputTwo, inputThree, inputFour;
+// Create buttons
 function createButtons() {
-  const inputTwo = document.createElement('button')
-  const inputThree = document.createElement('button')
-  const inputFour = document.createElement('button')
-  // [inputOne, inputTwo, inputThree, inputFour].forEach(function (input) {
-  //   input.appendChild(hudButtonDiv)
-  // })
-}createButtons()
+  inputOne = document.createElement('button');
+  inputTwo = document.createElement('button');
+  inputThree = document.createElement('button');
+  inputFour = document.createElement('button');
 
-// Select Inputs.
-// const inputOne = document.getElementById('option-one')
-// const inputTwo = document.getElementById('option-two')
-// const inputThree = document.getElementById('option-three')
-// const inputFour = document.getElementById('option-four')
+  [inputOne, inputTwo, inputThree, inputFour].forEach(function (input) {
+    hudButtonDiv.appendChild(input);
+    input.classList.add('button-style'); // Use classList.add() to add the class.
+    input.textContent = 'append';
+    applyUniqueColorsToButtons()
+  });
+} // createButtons();
+
+function removeInputs() {
+  imgEgypt.addEventListener('click', () => {
+    while (hudButtonDiv.firstChild) {
+      hudButtonDiv.removeChild(hudButtonDiv.firstChild)
+    }
+  })
+} // removeInputs()
 
 // Function to random Inputs-Color.
 function shuffleArray(array) {
@@ -56,11 +62,9 @@ function applyUniqueColorsToButtons() {
 
 // ! Variables.
 let winCondition = false; // console.log(winCondition)
-let timeOut = false;
 let stopTimer = false; console.log(stopTimer)
-let start = true; // wen prest the Button-Start it turn TRUE;
 let speedTimer = 50;
-let indexCard = ""; // add the name of the card function at the card
+let start = true; // wen prest the Button-Start it turn TRUE;
 
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
@@ -152,116 +156,110 @@ function Egypt() {
   //   winCondition = true;
   //   console.log('Win Condition is TRUE!')
   // })
-}
+} Egypt()
 
 
 // ! Game Card option 2-Iraq ••••••••••••••••••••••••••••••••••••
-function Iraq() {
-  timeOut = false;
-  winCondition = false;
-  indexCard = "Iraq";
+// function Iraq() {
+//   timeOut = false;
+//   winCondition = false;
+//   indexCard = "Iraq";
 
-  // Apply unique colors to buttons
-  applyUniqueColorsToButtons();
-  // display the image.
-  imgIraq.style.display = "block"
-  // display the new text.
-  textH3.textContent = "The Hanging Gardens of Babylon!";
+//   // Apply unique colors to buttons
+//   applyUniqueColorsToButtons();
+//   // display the image.
+//   imgIraq.style.display = "block"
+//   // display the new text.
+//   textH3.textContent = "The Hanging Gardens of Babylon!";
 
-  // inputOne.textContent = 'Brazil';
-  // inputTwo.textContent = 'Italia';
-  // inputThree.textContent = 'Iraq';
-  // inputFour.textContent = 'Roma';
+//   // inputOne.textContent = 'Brazil';
+//   // inputTwo.textContent = 'Italia';
+//   // inputThree.textContent = 'Iraq';
+//   // inputFour.textContent = 'Roma';
 
-  console.log('Is in Iraq');
+//   console.log('Is in Iraq');
 
-  // Remove Point Input.
-  // inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  // inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  // inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+//   // Remove Point Input.
+//   // inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+//   // inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+//   // inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
 
-  // Increase Star-Point condition.
-  let livePlusOne = 0
-  // inputThree.addEventListener('click', () => {
-  //   stopTimer = true;
-  //   if (livePlusOne === 0) {
-  //     livePlusOne += 1
-  //     startPoint.textContent++
+//   // Increase Star-Point condition.
+//   let livePlusOne = 0
+//   // inputThree.addEventListener('click', () => {
+//   //   stopTimer = true;
+//   //   if (livePlusOne === 0) {
+//   //     livePlusOne += 1
+//   //     startPoint.textContent++
 
-  //     // Delete this card from the array.
-  //     let index = arrayCardFunction.indexOf(Iraq);
-  //     if (index !== -1) {
-  //       arrayCardFunction.splice(index, 1);
-  //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-  //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-  //       selectRandomFunction()
-  //     }
-  //     // Delete Image:
-  //     imgIraq.style.display = "none"
-  //   }
-  //   winCondition = true;
-  //   console.log('Win Condition is TRUE!')
-  // })
-}
+//   //     // Delete this card from the array.
+//   //     let index = arrayCardFunction.indexOf(Iraq);
+//   //     if (index !== -1) {
+//   //       arrayCardFunction.splice(index, 1);
+//   //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+//   //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+//   //       selectRandomFunction()
+//   //     }
+//   //     // Delete Image:
+//   //     imgIraq.style.display = "none"
+//   //   }
+//   //   winCondition = true;
+//   //   console.log('Win Condition is TRUE!')
+//   // })
+// }
 
 
 // ! Game Card option 3-Greece ••••••••••••••••••••••••••••••••••••
-//! Mi solucion definitiva es crear una funcion que cree botones nuevos y luuego otra funcion que 
-//! los elimine. Y a si se acabaria el problemita the los botones que me tiene hasta los 'cojones'!
-//!
-//!
-//!
-//!
-function Greece() {
-  timeOut = false;
-  winCondition = false;
-  indexCard = "Greece";
+// function Greece() {
+//   timeOut = false;
+//   winCondition = false;
+//   indexCard = "Greece";
 
-  // Apply unique colors to buttons
-  applyUniqueColorsToButtons();
-  // display the image.
-  imgGreece.style.display = "block"
-  // display the new text.
-  textH3.textContent = "The Statue of Zeus at Olympia!";
+//   // Apply unique colors to buttons
+//   applyUniqueColorsToButtons();
+//   // display the image.
+//   imgGreece.style.display = "block"
+//   // display the new text.
+//   textH3.textContent = "The Statue of Zeus at Olympia!";
 
-  // inputOne.textContent = 'Syria';
-  // inputTwo.textContent = 'Greece';
-  // inputThree.textContent = 'Romania';
-  // inputFour.textContent = 'Libya';
+//   // inputOne.textContent = 'Syria';
+//   // inputTwo.textContent = 'Greece';
+//   // inputThree.textContent = 'Romania';
+//   // inputFour.textContent = 'Libya';
 
-  console.log('Is in Greece');
+//   console.log('Is in Greece');
 
-  // Remove Point Input.
-  // inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  // inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  // inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+//   // Remove Point Input.
+//   // inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+//   // inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+//   // inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
 
-  // I add the example here!
+//   // I add the example here!
 
 
-  // Increase Star-Point condition.
-  // let livePlusOne = 0
-  // inputTwo.addEventListener('click', () => {
-  //   stopTimer = true;
-  //   if (livePlusOne === 0) {
-  //     livePlusOne += 1
-  //     startPoint.textContent++
+//   // Increase Star-Point condition.
+//   // let livePlusOne = 0
+//   // inputTwo.addEventListener('click', () => {
+//   //   stopTimer = true;
+//   //   if (livePlusOne === 0) {
+//   //     livePlusOne += 1
+//   //     startPoint.textContent++
 
-  //     // Delete this card from the array.
-  //     let index = arrayCardFunction.indexOf(Greece);
-  //     if (index !== -1) {
-  //       arrayCardFunction.splice(index, 1);
-  //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-  //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-  //       selectRandomFunction()
-  //     }
-  //     // Delete Image:
-  //     imgGreece.style.display = "none"
-  //   }
-  //   winCondition = true;
-  //   console.log('Win Condition is TRUE!')
-  // })
-}
+//   //     // Delete this card from the array.
+//   //     let index = arrayCardFunction.indexOf(Greece);
+//   //     if (index !== -1) {
+//   //       arrayCardFunction.splice(index, 1);
+//   //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+//   //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+//   //       selectRandomFunction()
+//   //     }
+//   //     // Delete Image:
+//   //     imgGreece.style.display = "none"
+//   //   }
+//   //   winCondition = true;
+//   //   console.log('Win Condition is TRUE!')
+//   // })
+// }
 
 
 
@@ -282,7 +280,6 @@ function countdown() {
     // To add 1 star point.
     if (i < 18) {
       clearInterval(interval);
-      timeOut = true
       winCondition = false;
       livePoints.textContent -= "1" // Live condition.
       console.log("Blast off!");
