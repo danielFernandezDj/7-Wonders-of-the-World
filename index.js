@@ -67,7 +67,6 @@ if (start === true) {
   selectRandomFunction();
 }
 
-// Remove Input from.
 
 // To Remove Live Point and change to the next Card.
 function removePointSolution(indexCard) {
@@ -113,7 +112,7 @@ function Egypt() {
 
   console.log('Is in Egypt');
 
-  // Remove Point Input.
+  // Remove Point Input. handleInputClick
   inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
   inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
   inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
@@ -195,6 +194,12 @@ function Iraq() {
 
 
 // ! Game Card option 3-Greece ••••••••••••••••••••••••••••••••••••
+//! Mi solucion definitiva es crear una funcion que cree botones nuevos y luuego otra funcion que 
+//! los elimine. Y a si se acabaria el problemita the los botones que me tiene hasta los 'cojones'!
+//!
+//!
+//!
+//!
 function Greece() {
   timeOut = false;
   winCondition = false;
@@ -218,6 +223,9 @@ function Greece() {
   inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
   inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
   inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+
+  // I add the example here!
+
 
   // Increase Star-Point condition.
   let livePlusOne = 0
