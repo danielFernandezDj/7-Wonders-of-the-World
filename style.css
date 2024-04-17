@@ -142,7 +142,7 @@ h3 {
 
 /* Button Styling section •••••••••••••••••••••••• */
 #hud-button-div {
-    /* border: 1px solid #1500ff;  */
+    border: 1px solid #1500ff; 
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -150,7 +150,7 @@ h3 {
     flex-wrap: wrap;
     padding: 5px;
     width: 100%;
-    height: auto;
+    height: 50px;
     flex-grow: 2;
 }
 

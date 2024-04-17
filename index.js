@@ -1,25 +1,37 @@
-// Select the card storage section. 
+// Select the card storage section & HUD Button Division.
 const cardStorage = document.getElementById('card')
+const hudButtonDiv = document.getElementById('hud-button-div')
 
 // Select the Images in the storage.
-// Egypt
 const imgEgypt = document.getElementById("egypt")
 cardStorage.appendChild(imgEgypt)
-// Iraq
 const imgIraq = document.getElementById("iraq")
 cardStorage.appendChild(imgIraq)
-// Greece
 const imgGreece = document.getElementById("greece")
 cardStorage.appendChild(imgGreece)
 
 // Select Q&A Text.
 const textH3 = document.getElementById('h3Q')
 
+const inputOne = document.createElement('button')
+inputOne.textContent = 'Input is append';
+inputOne.className = 'button-style';
+inputOne.appendChild(hudButtonDiv);
+
+function createButtons() {
+  const inputTwo = document.createElement('button')
+  const inputThree = document.createElement('button')
+  const inputFour = document.createElement('button')
+  // [inputOne, inputTwo, inputThree, inputFour].forEach(function (input) {
+  //   input.appendChild(hudButtonDiv)
+  // })
+}createButtons()
+
 // Select Inputs.
-const inputOne = document.getElementById('option-one')
-const inputTwo = document.getElementById('option-two')
-const inputThree = document.getElementById('option-three')
-const inputFour = document.getElementById('option-four')
+// const inputOne = document.getElementById('option-one')
+// const inputTwo = document.getElementById('option-two')
+// const inputThree = document.getElementById('option-three')
+// const inputFour = document.getElementById('option-four')
 
 // Function to random Inputs-Color.
 function shuffleArray(array) {
@@ -105,41 +117,41 @@ function Egypt() {
   // display the new text.
   textH3.textContent = "The Great Pyramid of Giza!"
 
-  inputOne.textContent = 'Egypt';
-  inputTwo.textContent = 'Vegas';
-  inputThree.textContent = 'India';
-  inputFour.textContent = 'Pakistan';
+  // inputOne.textContent = 'Egypt';
+  // inputTwo.textContent = 'Vegas';
+  // inputThree.textContent = 'India';
+  // inputFour.textContent = 'Pakistan';
 
   console.log('Is in Egypt');
 
   // Remove Point Input. handleInputClick
-  inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
-  inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
-  inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  // inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  // inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  // inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
 
   // Increase Star-Point condition.
   let livePlusOne = 0
-  inputOne.addEventListener('click', () => {
-    stopTimer = true;
+  // inputOne.addEventListener('click', () => {
+  //   stopTimer = true;
 
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
+  //   if (livePlusOne === 0) {
+  //     livePlusOne += 1
+  //     startPoint.textContent++
 
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Egypt);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction();
-      }
-      // Delete Image:
-      imgEgypt.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
+  //     // Delete this card from the array.
+  //     let index = arrayCardFunction.indexOf(Egypt);
+  //     if (index !== -1) {
+  //       arrayCardFunction.splice(index, 1);
+  //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+  //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+  //       selectRandomFunction();
+  //     }
+  //     // Delete Image:
+  //     imgEgypt.style.display = "none"
+  //   }
+  //   winCondition = true;
+  //   console.log('Win Condition is TRUE!')
+  // })
 }
 
 
@@ -156,40 +168,40 @@ function Iraq() {
   // display the new text.
   textH3.textContent = "The Hanging Gardens of Babylon!";
 
-  inputOne.textContent = 'Brazil';
-  inputTwo.textContent = 'Italia';
-  inputThree.textContent = 'Iraq';
-  inputFour.textContent = 'Roma';
+  // inputOne.textContent = 'Brazil';
+  // inputTwo.textContent = 'Italia';
+  // inputThree.textContent = 'Iraq';
+  // inputFour.textContent = 'Roma';
 
   console.log('Is in Iraq');
 
   // Remove Point Input.
-  inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+  // inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+  // inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+  // inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
 
   // Increase Star-Point condition.
   let livePlusOne = 0
-  inputThree.addEventListener('click', () => {
-    stopTimer = true;
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
+  // inputThree.addEventListener('click', () => {
+  //   stopTimer = true;
+  //   if (livePlusOne === 0) {
+  //     livePlusOne += 1
+  //     startPoint.textContent++
 
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Iraq);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-      }
-      // Delete Image:
-      imgIraq.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
+  //     // Delete this card from the array.
+  //     let index = arrayCardFunction.indexOf(Iraq);
+  //     if (index !== -1) {
+  //       arrayCardFunction.splice(index, 1);
+  //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+  //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+  //       selectRandomFunction()
+  //     }
+  //     // Delete Image:
+  //     imgIraq.style.display = "none"
+  //   }
+  //   winCondition = true;
+  //   console.log('Win Condition is TRUE!')
+  // })
 }
 
 
@@ -212,43 +224,43 @@ function Greece() {
   // display the new text.
   textH3.textContent = "The Statue of Zeus at Olympia!";
 
-  inputOne.textContent = 'Syria';
-  inputTwo.textContent = 'Greece';
-  inputThree.textContent = 'Romania';
-  inputFour.textContent = 'Libya';
+  // inputOne.textContent = 'Syria';
+  // inputTwo.textContent = 'Greece';
+  // inputThree.textContent = 'Romania';
+  // inputFour.textContent = 'Libya';
 
   console.log('Is in Greece');
 
   // Remove Point Input.
-  inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  // inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  // inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  // inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
 
   // I add the example here!
 
 
   // Increase Star-Point condition.
-  let livePlusOne = 0
-  inputTwo.addEventListener('click', () => {
-    stopTimer = true;
-    if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
+  // let livePlusOne = 0
+  // inputTwo.addEventListener('click', () => {
+  //   stopTimer = true;
+  //   if (livePlusOne === 0) {
+  //     livePlusOne += 1
+  //     startPoint.textContent++
 
-      // Delete this card from the array.
-      let index = arrayCardFunction.indexOf(Greece);
-      if (index !== -1) {
-        arrayCardFunction.splice(index, 1);
-        console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-        let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-        selectRandomFunction()
-      }
-      // Delete Image:
-      imgGreece.style.display = "none"
-    }
-    winCondition = true;
-    console.log('Win Condition is TRUE!')
-  })
+  //     // Delete this card from the array.
+  //     let index = arrayCardFunction.indexOf(Greece);
+  //     if (index !== -1) {
+  //       arrayCardFunction.splice(index, 1);
+  //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
+  //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+  //       selectRandomFunction()
+  //     }
+  //     // Delete Image:
+  //     imgGreece.style.display = "none"
+  //   }
+  //   winCondition = true;
+  //   console.log('Win Condition is TRUE!')
+  // })
 }
 
 
