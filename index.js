@@ -9,6 +9,14 @@ const imgIraq = document.getElementById("iraq")
 cardStorage.appendChild(imgIraq)
 const imgGreece = document.getElementById("greece")
 cardStorage.appendChild(imgGreece)
+const imgTurkey = document.getElementById('turkey')
+cardStorage.appendChild(imgTurkey)
+const imgTurkey = document.getElementById('turkey')
+cardStorage.appendChild(imgTurkey)
+// const imgTurkey = document.getElementById('turkey')
+// cardStorage.appendChild(imgTurkey)
+// const imgTurkey = document.getElementById('turkey')
+// cardStorage.appendChild(imgTurkey)
 
 // Select Q&A Text.
 const textH3 = document.getElementById('h3Q')
@@ -29,15 +37,16 @@ function createButtons() {
     input.textContent = 'append';
     applyUniqueColorsToButtons()
   });
-} // createButtons();
+}
 
+// Remove Inputs.
 function removeInputs() {
   while (hudButtonDiv.firstChild) {
     hudButtonDiv.removeChild(hudButtonDiv.firstChild)
   }
-} // removeInputs()
+}
 
-// Function to random Inputs-Color.
+// Random Inputs-Color.
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -68,8 +77,12 @@ let livePoints = document.getElementById('menu-h2-live')
 let startPoint = document.getElementById('point-number')
 
 // Add the Card function to this array.
-let arrayCardFunction = [Egypt, Iraq] //  , Greece
+let arrayCardFunction = [Egypt, Iraq, Greece, Turkey]
 let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+
+if (livePoints.textContent !== 0) { // todo If live is = 0...; fix live 
+ console.log(`Live is equal 0!`)
+} else {  location.reload(); }
 
 // When the game start a new card is selected.
 if (start === true) {
@@ -91,15 +104,21 @@ function removeCardFromArray(indexCard) {
     let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
     if (arrayCardFunction.length !== 0) {
       selectRandomFunction();
-    } else {location.reload();} // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
+    } else { location.reload(); } // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
   }
 }
 
 // Remove Live Point and change to the next Card.
 function removePointSolution(indexCard) {
   console.log(`you lose on Star point`);
-  
+
+  // The card name goes in the 'indexCard'
+  let index = arrayCardFunction.indexOf(indexCard);
+
   removeInputs() // Remove inputs.
+
+  let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+  selectRandomFunction();
 
   if (livePoints.textContent > 0) {
     livePoints.textContent--;
@@ -107,28 +126,28 @@ function removePointSolution(indexCard) {
     livePoints.textContent = 0;
     winCondition = false;
   }
-  console.log(livePoints.textContent);
+  console.log(`The removePointSolution it works`);
   console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
 }
 
 
 // ! Card 1-Egypt ••••••••••••••••••••••••••••••••••••
-function Egypt() {
+function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Egypt'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
   timeOut = false;
   winCondition = false;
-  indexCard = "Egypt";
+  indexCard = "Egypt"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // Apply unique colors to buttons
   applyUniqueColorsToButtons();
 
-  imgEgypt.style.display = "block" // display the image.
+  imgEgypt.style.display = "block" // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   textH3.textContent = "The Great Pyramid of Giza!" // Q&A text goes here.
 
-  // Add Country Name to each input.
+  // Add Country Name to each input. // <<<<<<<<<<<<<<<<<<<<<<<<<
   inputOne.textContent = 'Egypt';
   inputTwo.textContent = 'Vegas';
   inputThree.textContent = 'India';
@@ -139,17 +158,17 @@ function Egypt() {
   inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
   inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
 
-  // todo Increase Star-Point condition.
+  // Increase Star-Point condition.
   let livePlusOne = 0
-  inputOne.addEventListener('click', () => {
+  inputOne.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
     stopTimer = true;
     removeInputs() // Remove the inputs.
-    removeCardFromArray(Egypt)
-
+    removeCardFromArray(Egypt) // <<<<<<<<<<<<<<<<<<<<<<<<<
+ 
     // if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
-      imgEgypt.style.display = "none"
+    livePlusOne += 1
+    startPoint.textContent++
+    imgEgypt.style.display = "none" // <<<<<<<<<<<<<<<<<<<<<<<<<
     // }
 
     winCondition = true;
@@ -194,70 +213,156 @@ function Iraq() {
     removeCardFromArray(Iraq)
 
     // if (livePlusOne === 0) {
-      livePlusOne += 1
-      startPoint.textContent++
-      imgIraq.style.display = "none"
+    livePlusOne += 1
+    startPoint.textContent++
+    imgIraq.style.display = "none"
     // }
 
     winCondition = true;
     console.log('Win Condition is TRUE! => remove this card from the array')
 
-  }) 
+  })
 } // Iraq()
 
 
-// ! Game Card option 3-Greece ••••••••••••••••••••••••••••••••••••
-// function Greece() {
-//   timeOut = false;
-//   winCondition = false;
-//   indexCard = "Greece";
+// ! Card  3-Greece ••••••••••••••••••••••••••••••••••••
+function Greece() {
+  console.log('Is in Greece'); // checking if we are in this function.
+  createButtons() // Create new 'inputs'.
 
-//   // Apply unique colors to buttons
-//   applyUniqueColorsToButtons();
-//   // display the image.
-//   imgGreece.style.display = "block"
-//   // display the new text.
-//   textH3.textContent = "The Statue of Zeus at Olympia!";
+  timeOut = false;
+  winCondition = false;
+  indexCard = "Greece"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
-//   // inputOne.textContent = 'Syria';
-//   // inputTwo.textContent = 'Greece';
-//   // inputThree.textContent = 'Romania';
-//   // inputFour.textContent = 'Libya';
+  // Apply unique colors to buttons
+  applyUniqueColorsToButtons();
 
-//   console.log('Is in Greece');
+  imgGreece.style.display = "block"  // display the image. // <<<<<<<<<<<<<<<<<<<<<<<<<
 
-//   // Remove Point Input.
-//   // inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-//   // inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-//   // inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  textH3.textContent = "The Statue of Zeus at Olympia!";  // Q&A text goes here.
 
-//   // I add the example here!
+  // Add Country Name to each input.  // <<<<<<<<<<<<<<<<<<<<<<<<<
+  inputOne.textContent = 'Syria';
+  inputTwo.textContent = 'Greece';
+  inputThree.textContent = 'Romania';
+  inputFour.textContent = 'Libya';
 
 
-//   // Increase Star-Point condition.
-//   // let livePlusOne = 0
-//   // inputTwo.addEventListener('click', () => {
-//   //   stopTimer = true;
-//   //   if (livePlusOne === 0) {
-//   //     livePlusOne += 1
-//   //     startPoint.textContent++
+  // Remove Point Input & change to other card.
+  inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
 
-//   //     // Delete this card from the array.
-//   //     let index = arrayCardFunction.indexOf(Greece);
-//   //     if (index !== -1) {
-//   //       arrayCardFunction.splice(index, 1);
-//   //       console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
-//   //       let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
-//   //       selectRandomFunction()
-//   //     }
-//   //     // Delete Image:
-//   //     imgGreece.style.display = "none"
-//   //   }
-//   //   winCondition = true;
-//   //   console.log('Win Condition is TRUE!')
-//   // })
-// }
+  // todo Increase Star-Point condition.
+  let livePlusOne = 0
+  inputTwo.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+    stopTimer = true;
+    removeInputs() // Remove the inputs.
+    removeCardFromArray(Greece) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
+    // if (livePlusOne === 0) {
+    livePlusOne += 1
+    startPoint.textContent++
+    imgGreece.style.display = "none" // <<<<<<<<<<<<<<<<<<<<<<<<<
+    // }
+
+    winCondition = true;
+    console.log('Win Condition is TRUE! => remove this card from the array')
+
+  })
+} // Greece()
+
+// ! Card  3-Greece ••••••••••••••••••••••••••••••••••••
+function Turkey() {
+  console.log('Is in Turkey'); // checking if we are in this function. 
+  createButtons() // Create new 'inputs'.  
+
+  timeOut = false;
+  winCondition = false;
+  indexCard = "Turkey"; // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+  // Apply unique colors to buttons
+  applyUniqueColorsToButtons();
+
+  imgTurkey.style.display = "block"  // display the image. // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+  textH3.textContent = "The Temple of Artemis at Ephesus!";  // Q&A text goes here.
+
+  // Add Country Name to each input.  // <<<<<<<<<<<<<<<<<<<<<<<<<
+  inputOne.textContent = 'Georgia';
+  inputTwo.textContent = 'Turkey';
+  inputThree.textContent = 'Syria';
+  inputFour.textContent = 'Armenia';
+
+
+  // Remove Point Input & change to other card.
+  inputOne.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
+  inputThree.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
+  inputFour.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
+
+  // todo Increase Star-Point condition.
+  let livePlusOne = 0
+  inputTwo.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+    stopTimer = true;
+    removeInputs() // Remove the inputs.
+    removeCardFromArray(Turkey) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    // if (livePlusOne === 0) {
+    livePlusOne += 1
+    startPoint.textContent++
+    imgTurkey.style.display = "none" // <<<<<<<<<<<<<<<<<<<<<<<<<
+    // }
+
+    winCondition = true;
+    console.log('Win Condition is TRUE! => remove this card from the array')
+
+  })
+} // Turkey()
+
+// ! Card 1-Egypt ••••••••••••••••••••••••••••••••••••
+function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
+  console.log('Is in Egypt'); // checking if we are in this function.
+  createButtons() // Create new 'inputs'.
+
+  timeOut = false;
+  winCondition = false;
+  indexCard = "Egypt"; // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+  // Apply unique colors to buttons
+  applyUniqueColorsToButtons();
+
+  imgEgypt.style.display = "block" // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+  textH3.textContent = "The Great Pyramid of Giza!" // Q&A text goes here.
+
+  // Add Country Name to each input. // <<<<<<<<<<<<<<<<<<<<<<<<<
+  inputOne.textContent = 'Egypt';
+  inputTwo.textContent = 'Vegas';
+  inputThree.textContent = 'India';
+  inputFour.textContent = 'Pakistan';
+
+  // Remove Point Input & change to other card.
+  inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+
+  // Increase Star-Point condition.
+  let livePlusOne = 0
+  inputOne.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+    stopTimer = true;
+    removeInputs() // Remove the inputs.
+    removeCardFromArray(Egypt) // <<<<<<<<<<<<<<<<<<<<<<<<<
+ 
+    // if (livePlusOne === 0) {
+    livePlusOne += 1
+    startPoint.textContent++
+    imgEgypt.style.display = "none" // <<<<<<<<<<<<<<<<<<<<<<<<<
+    // }
+
+    winCondition = true;
+    console.log('Win Condition is TRUE! => remove this card from the array')
+  })
+} // Egypt()
 
 
 // Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••

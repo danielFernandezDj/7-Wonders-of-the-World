@@ -1,10 +1,10 @@
 The Seven Wonders of the Ancient World are:
 
 <!-- The Great Pyramid of Giza (Egypt) -->
-The Hanging Gardens of Babylon (Iraq)
-The Statue of Zeus at Olympia (Greece)
-The Temple of Artemis at Ephesus (Turkey)
-The Mausoleum at Halicarnassus (Turkey)
+<!-- The Hanging Gardens of Babylon (Iraq) -->
+<!-- The Statue of Zeus at Olympia (Greece) -->
+<!-- The Temple of Artemis at Ephesus (Turkey) -->
+<!-- The Mausoleum at Halicarnassus (Turkey) -->
 The Colossus of Rhodes (Greece)
 The Lighthouse of Alexandria (Egypt)
 
