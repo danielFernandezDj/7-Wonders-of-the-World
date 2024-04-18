@@ -21,7 +21,6 @@ cardStorage.appendChild(imgEgypt2)
 // Select Q&A Text.
 const textH3 = document.getElementById('h3Q')
 
-
 // Declare the input variables in the outer scope.
 let inputOne, inputTwo, inputThree, inputFour;
 // Create buttons
@@ -66,11 +65,12 @@ function applyUniqueColorsToButtons() {
   });
 }
 
-// ! Variables.
+// ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
-let stopTimer = false; console.log(stopTimer)
-let speedTimer = 50;
-let start = true; // wen prest the Button-Start it turn TRUE;
+let start = false; // Turn 'TRUE' wen prest the button Start-New-Game.
+// Time Var variables.
+// let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
+// let speedTimer = 10;
 
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
@@ -78,21 +78,54 @@ let startPoint = document.getElementById('point-number')
 
 // Add the Card function to this array.
 let arrayCardFunction = [Egypt, Iraq, Greece, Turkey, Turkey2, Greece2, Egypt2]  // <<<
-let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
 
-if (livePoints.textContent !== 0) { // todo If live is = 0...; fix live 
- console.log(`Live is equal 0!`)
-} else {  location.reload(); }
+// When the live is 0 =>
+function checkLivePoints() {
+  if (parseInt(livePoints.textContent) <= 1) {
+    console.log(`Live is equal to 0! •••••••••••••••••••••••••••••••••••••••••`);
+    location.reload(); // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
+  }
+}
+
 
 // When the game start a new card is selected.
 if (start === true) {
-  console.log(`Strat is ${start}`);
+  console.log(`Start is ${start}`);
   selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
   selectRandomFunction();
-  return start = false;
+  start = false;
 }
 
-//  Remove card from the array. 
+// Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// let timeVar = document.getElementById("time-var");
+// let timeProgress = document.getElementById('time-var-progress')
+// let i = parseFloat(window.getComputedStyle(timeVar).width
+// function countdown() { 
+//   let interval = setInterval(function () {
+//     timeProgress.style.width = i + "px"; // Set the width of timeVar
+
+//     if (stopTimer == false) {
+//       console.log(i);
+//       i--;
+//     } else { i = i; console.log(i); }
+
+//     // To remove 1 Live.
+//     if (i < 18) {
+//       clearInterval(interval);
+//       livePoints.textContent -= "1" // Live condition.
+//       winCondition = false;
+//       console.log("Blast off!");
+//     }
+
+//     // Change the timer background Color.
+//     if (i === 150) {
+//       timeProgress.style.backgroundColor = 'red'
+//     }
+//     // Reduce the time speed wen the player get Points.
+// //  }, speedTimer);
+
+//  Remove card from the array.  ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 function removeCardFromArray(indexCard) {
   // The card name goes in the 'indexCard'
   let index = arrayCardFunction.indexOf(indexCard);
@@ -110,15 +143,17 @@ function removeCardFromArray(indexCard) {
 
 // Remove Live Point and change to the next Card.
 function removePointSolution(indexCard) {
-  console.log(`you lose on Star point`);
+  // console.log(`you lose on Star point`);
 
   // The card name goes in the 'indexCard'
   let index = arrayCardFunction.indexOf(indexCard);
 
   removeInputs() // Remove inputs.
 
-  let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
+  selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
   selectRandomFunction();
+
+  checkLivePoints();
 
   if (livePoints.textContent > 0) {
     livePoints.textContent--;
@@ -126,17 +161,16 @@ function removePointSolution(indexCard) {
     livePoints.textContent = 0;
     winCondition = false;
   }
-  console.log(`The removePointSolution it works`);
+  // console.log(`The removePointSolution it works`);
   console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
 }
 
-
+// GamePlay Card ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 // ! Card 1-Egypt ••••••••••••••••••••••••••••••••••••
 function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Egypt'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Egypt"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -164,7 +198,7 @@ function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     stopTimer = true;
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt) // <<<<<<<<<<<<<<<<<<<<<<<<<
- 
+
     // if (livePlusOne === 0) {
     livePlusOne += 1
     startPoint.textContent++
@@ -172,16 +206,15 @@ function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Egypt()
 
 // ! Card 2-Iraq ••••••••••••••••••••••••••••••••••••
-function Iraq() {
+function Iraq() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Iraq'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Iraq";
 
@@ -218,17 +251,15 @@ function Iraq() {
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
-
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Iraq()
 
 // ! Card  3-Greece ••••••••••••••••••••••••••••••••••••
-function Greece() {
+function Greece() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Greece'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Greece"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -265,17 +296,15 @@ function Greece() {
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
-
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Greece()
 
 // ! Card  4-Turkey ••••••••••••••••••••••••••••••••••••
-function Turkey() {
+function Turkey() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Turkey'); // checking if we are in this function. 
   createButtons() // Create new 'inputs'.  
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Turkey"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -312,17 +341,15 @@ function Turkey() {
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
-
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Turkey()
 
 // ! Card  5-Turkey-2 ••••••••••••••••••••••••••••••••••••
-function Turkey2() {
+function Turkey2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Turkey-2'); // checking if we are in this function. 
   createButtons() // Create new 'inputs'.  
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Turkey2"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -359,8 +386,7 @@ function Turkey2() {
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
-
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Turkey2()
 
@@ -369,7 +395,6 @@ function Greece2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Greece-2'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Greece2"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -406,8 +431,7 @@ function Greece2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
-
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Greece2()
 
@@ -416,7 +440,6 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Egypt-2'); // checking if we are in this function.
   createButtons() // Create new 'inputs'.
 
-  timeOut = false;
   winCondition = false;
   indexCard = "Egypt2"; // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -444,7 +467,7 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     stopTimer = true;
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt2) // <<<<<<<<<<<<<<<<<<<<<<<<<
- 
+
     // if (livePlusOne === 0) {
     livePlusOne += 1
     startPoint.textContent++
@@ -452,51 +475,20 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     // }
 
     winCondition = true;
-    console.log('Win Condition is TRUE! => remove this card from the array')
+    // console.log('Win Condition is TRUE! => remove this card from the array')
   })
 } // Egypt2()
 
 
-// Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-let timeVar = document.getElementById("time-var");
-let timeProgress = document.getElementById('time-var-progress')
-
-function countdown() {
-  let i = parseFloat(window.getComputedStyle(timeVar).width)
-  let interval = setInterval(function () {
-    timeProgress.style.width = i + "px"; // Set the width of timeVar
-
-    if (stopTimer == false) {
-      console.log(i);
-      i--;
-    } else { i = i; console.log(i); }
-
-    // To add 1 star point.
-    if (i < 18) {
-      clearInterval(interval);
-      winCondition = false;
-      livePoints.textContent -= "1" // Live condition.
-      console.log("Blast off!");
-    }
-    // Change the timer background Color.
-    if (i === 150) {
-      timeProgress.style.backgroundColor = 'red'
-    }
-    // Reduce the time speed wen the player get Points.
-  }, speedTimer);
-}
-
-
-
 // TODO: add the poUp action
 // // Lose conditions:
-// If you select the wrong option you lose 1-live; => and change to a random card.
-// if the time is 0 you lose 1-live; => and change to a random card.
-// if your Live points is == 0, top game =>
+// //If you select the wrong option you lose 1-live; => and change to a random card.
+// //if the time is 0 you lose 1-live; => and change to a random card.
+// //if your Live points is == 0, top game =>
 // then Pop-Up your Lose.
 
 // Win condition:
 // // You get one star if player select the right option;
-// => then delete this card from the array - and change to a random card. 
-// Player wins wen get the total of 7 stars.
+// //=> then delete this card from the array - and change to a random card. 
+// //Player wins wen get the total of 7 stars.
 // => then Pop Up your Win
