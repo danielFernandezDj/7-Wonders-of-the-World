@@ -23,9 +23,10 @@ body {
 
 /* GameStart Menu */
 #start-menu-container {
-    /* border: 1px solid #f5f5f562; */
-    /* box-shadow: 20px #a39fc0; */
-    border-radius: 10px;
+    border: 20px solid #f5c950ea;
+    border-style: ridge;
+    /* border-radius: 10px; */
+    /* box-shadow: 20px 20px solid #a39fc0; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,22 +39,21 @@ body {
 }
 
 #start-menu-container h1 {
-    background-color: #1c1d1fd0;
+    text-shadow: 2px 5px 6px #181534;
     color: #f5c950;
     padding: 10px 30px;
-    border-radius: 15px;
     text-align: center;
     position: absolute;
-    top: 10px;
-    max-width: 490px;
-    font-size: 50px;
+    top: 30px;
+    margin: auto;
+    max-width: 500px;
+    font-size: 65px;
     z-index: 10;
-
 }
 
 #menu-img {
     /* display: none; */
-    border-radius: 10px;
+    /* border-radius: 10px; */
     width: 100%;
     height: 100%;
     position: relative;
@@ -75,11 +75,12 @@ body {
 }
 
 #start-menu-button {
-    background-color: #1c1d1fcc;
+    background-color: #1c1d1f;
+    border-radius: 4px;
     color: #f5c950;
+    box-shadow: 0px 0px 6px #f5c95053;
     font-weight: bold;
     border: none;
-    border-radius: 10px;
     margin: auto;
     width: 100px;
     height: 50px;
