@@ -38,6 +38,11 @@ function createButtons() {
   });
 }
 
+// Set a timer for 'async' functions.
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 // Remove Inputs.
 function removeInputs() {
   while (hudButtonDiv.firstChild) {
@@ -72,15 +77,18 @@ let winCondition = false; // console.log(winCondition)
 // let speedTimer = 10;
 
 // Main Menu start game condition.
-function startMenu() {
+async function startMenu() {
   // Get Menu Div's.
   const startMenuContainer = document.getElementById('start-menu-container')
 
-  // Get Buttons.
-  document.getElementById('start-menu-button').addEventListener('click', () => {
+  // Get Buttons and apply a Condition.
+  document.getElementById('start-menu-button').addEventListener('click', async () => {
+    console.log("Waiting some seconds...");
+    await delay(500); // Waiting some seconds (2000 milliseconds)
+    // todo: Put button audio here!
+
     startMenuContainer.style.display = 'none';
     console.log('Button is press it!')
-
     selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
     selectRandomFunction();
   })
@@ -98,9 +106,22 @@ selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFun
 function checkLivePoints() {
   if (parseInt(livePoints.textContent) <= 1) {
     console.log(`Live is equal to 0! •••••••••••••••••••••••••••••••••••••••••`);
-    location.reload(); // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
+    window.open('../assets/html/endMenu.html', '_self')
+    // location.reload(); // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
   }
 }
+
+// Testing the Timer Function.
+async function startAfterDelay() {
+  console.log("Waiting for 2 seconds...");
+  await delay(1000); // Wait for 2 seconds (2000 milliseconds)
+  console.log("2 seconds have passed. Starting now!");
+  // Put your code here that you want to execute after the delay
+}
+
+// Call the function to start after delay
+startAfterDelay();
+
 
 // Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 // let timeVar = document.getElementById("time-var");
