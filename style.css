@@ -68,7 +68,7 @@ body {
     justify-content: center;
     flex-flow: wrap column;
     position: absolute;
-    top: 500px;
+    top: 440px;
     width: 580px;
     height: 100px;
     z-index: 11;

@@ -44,10 +44,10 @@ function delay(ms) {
 }
 
 // Remove Inputs.
-function removeInputs() {
-  while (hudButtonDiv.firstChild) {
-    hudButtonDiv.removeChild(hudButtonDiv.firstChild)
-  }
+async function removeInputs() {
+    while (hudButtonDiv.firstChild) {
+      hudButtonDiv.removeChild(hudButtonDiv.firstChild)
+    }
 }
 
 // Random Inputs-Color.
@@ -72,12 +72,13 @@ function applyUniqueColorsToButtons() {
 
 // ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
+let cardAwaitTimer = 500;
 // Time Var variables. > not used!
 // let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
 // let speedTimer = 10;
 
 // Main Menu start game condition.
-async function startMenu() {
+function startMenu() {
   // Get Menu Div's.
   const startMenuContainer = document.getElementById('start-menu-container')
 
@@ -102,12 +103,17 @@ let startPoint = document.getElementById('point-number')
 let arrayCardFunction = [Egypt, Iraq, Greece, Turkey, Turkey2, Greece2, Egypt2]  // <<<
 selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
 
-// When the live is 0 =>
-function checkLivePoints() {
+// When the live is 0 => open the Loser HTML file.
+async function checkLivePoints() {
   if (parseInt(livePoints.textContent) <= 1) {
     console.log(`Live is equal to 0! •••••••••••••••••••••••••••••••••••••••••`);
+
+    // Open the HTML lose file.
+    console.log("Waiting some seconds...");
+    await delay(500); // Waiting some seconds (2000 milliseconds)
+    // todo: Put button audio here!
+
     window.open('../assets/html/endMenu.html', '_self')
-    // location.reload(); // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
   }
 }
 
@@ -151,8 +157,14 @@ startAfterDelay();
 //     // Reduce the time speed wen the player get Points.
 // //  }, speedTimer);
 
-//  Remove card from the array.  ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-function removeCardFromArray(indexCard) {
+
+function PlayNewAudio(urlAudio) {
+  playAudio = new Audio(urlAudio); // 'path/to/your/audio/file.mp3'
+  playAudio.play()
+}
+
+//  Remove 'card' from the array.  ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+async function removeCardFromArray(indexCard) {
   // The card name goes in the 'indexCard'
   let index = arrayCardFunction.indexOf(indexCard);
 
@@ -163,7 +175,14 @@ function removeCardFromArray(indexCard) {
     let selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)]
     if (arrayCardFunction.length !== 0) {
       selectRandomFunction();
-    } else { location.reload(); } // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
+    } else {
+      // Open the HTML lose file. 
+      console.log("Waiting some seconds...");
+      await delay(500); // Waiting some seconds (2000 milliseconds)
+      // todo: Put button audio here!
+
+      window.open('../assets/html/winMenu.html', '_self')
+    }
   }
 }
 
@@ -220,10 +239,18 @@ function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // Increase Star-Point condition.
   let livePlusOne = 0
-  inputOne.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+
+  inputOne.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -265,10 +292,17 @@ function Iraq() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
-  inputThree.addEventListener('click', () => {
-    stopTimer = true;
+  inputThree.addEventListener('click', async () => {
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Iraq)
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -310,10 +344,17 @@ function Greece() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
-  inputTwo.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+  inputTwo.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Greece) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -355,10 +396,17 @@ function Turkey() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
-  inputTwo.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+  inputTwo.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Turkey) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -400,10 +448,17 @@ function Turkey2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
-  inputOne.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+  inputOne.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
     stopTimer = true;
     removeInputs() // Remove the inputs.
     removeCardFromArray(Turkey2) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -445,10 +500,17 @@ function Greece2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
-  inputFour.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+  inputFour.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Greece2) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
@@ -489,10 +551,17 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
   // Increase Star-Point condition.
   let livePlusOne = 0
-  inputFour.addEventListener('click', () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+  inputFour.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
+
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt2) // <<<<<<<<<<<<<<<<<<<<<<<<<
+
+    if (arrayCardFunction.length === 0) {
+      console.log("Waiting some seconds...");
+      await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
+      // todo: Put the 'Won' audio here!
+
+    }
 
     // if (livePlusOne === 0) {
     livePlusOne += 1
