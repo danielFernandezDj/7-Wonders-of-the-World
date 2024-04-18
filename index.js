@@ -67,10 +67,24 @@ function applyUniqueColorsToButtons() {
 
 // ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
-let start = false; // Turn 'TRUE' wen prest the button Start-New-Game.
-// Time Var variables.
+// Time Var variables. > not used!
 // let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
 // let speedTimer = 10;
+
+// Main Menu start game condition.
+function startMenu() {
+  // Get Menu Div's.
+  const startMenuContainer = document.getElementById('start-menu-container')
+
+  // Get Buttons.
+  document.getElementById('start-menu-button').addEventListener('click', () => {
+    startMenuContainer.style.display = 'none';
+    console.log('Button is press it!')
+
+    selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
+    selectRandomFunction();
+  })
+} startMenu()
 
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
@@ -86,15 +100,6 @@ function checkLivePoints() {
     console.log(`Live is equal to 0! •••••••••••••••••••••••••••••••••••••••••`);
     location.reload(); // Change in the future to an 'async Function()', and use 'await' until the player select 'start' a new game!
   }
-}
-
-
-// When the game start a new card is selected.
-if (start === true) {
-  console.log(`Start is ${start}`);
-  selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
-  selectRandomFunction();
-  start = false;
 }
 
 // Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
