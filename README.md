@@ -1,8 +1,8 @@
-Certainly! Here's a simple and concise README for your project:
 
 ---
 
 # The 7 Wonders of the World
+![Image Alt Text](/Screenshot%202024-04-19%20at%2012.34.48 PM.png)
 
 Welcome to "The 7 Wonders of the World" game!
 
