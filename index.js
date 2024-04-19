@@ -23,7 +23,7 @@ const textH3 = document.getElementById('h3Q')
 
 // Declare the input variables in the outer scope.
 let inputOne, inputTwo, inputThree, inputFour;
-// Create buttons
+
 function createButtons() {
   inputOne = document.createElement('button');
   inputTwo = document.createElement('button');
@@ -38,12 +38,11 @@ function createButtons() {
   });
 }
 
-// Set a timer for 'async' functions.
+// Set a delay timer for 'async' functions.
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// Remove Inputs.
 async function removeInputs() {
     while (hudButtonDiv.firstChild) {
       hudButtonDiv.removeChild(hudButtonDiv.firstChild)
@@ -77,10 +76,13 @@ let cardAwaitTimer = 500;
 // let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
 // let speedTimer = 10;
 
-// Main Menu start game condition.
+
+// TODO: Main Menu start game condition.
 function startMenu() {
   // Get Menu Div's.
   const startMenuContainer = document.getElementById('start-menu-container')
+
+  Audio.play
 
   // Get Buttons and apply a Condition.
   document.getElementById('start-menu-button').addEventListener('click', async () => {
@@ -124,39 +126,9 @@ async function startAfterDelay() {
   console.log("2 seconds have passed. Starting now!");
   // Put your code here that you want to execute after the delay
 }
+new Audio();
 
-// Call the function to start after delay
 startAfterDelay();
-
-
-// Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-// let timeVar = document.getElementById("time-var");
-// let timeProgress = document.getElementById('time-var-progress')
-// let i = parseFloat(window.getComputedStyle(timeVar).width
-// function countdown() { 
-//   let interval = setInterval(function () {
-//     timeProgress.style.width = i + "px"; // Set the width of timeVar
-
-//     if (stopTimer == false) {
-//       console.log(i);
-//       i--;
-//     } else { i = i; console.log(i); }
-
-//     // To remove 1 Live.
-//     if (i < 18) {
-//       clearInterval(interval);
-//       livePoints.textContent -= "1" // Live condition.
-//       winCondition = false;
-//       console.log("Blast off!");
-//     }
-
-//     // Change the timer background Color.
-//     if (i === 150) {
-//       timeProgress.style.backgroundColor = 'red'
-//     }
-//     // Reduce the time speed wen the player get Points.
-// //  }, speedTimer);
-
 
 function PlayNewAudio(urlAudio) {
   playAudio = new Audio(urlAudio); // 'path/to/your/audio/file.mp3'
@@ -575,15 +547,32 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 } // Egypt2()
 
 
-// TODO: add the poUp action
-// // Lose conditions:
-// //If you select the wrong option you lose 1-live; => and change to a random card.
-// //if the time is 0 you lose 1-live; => and change to a random card.
-// //if your Live points is == 0, top game =>
-// then Pop-Up your Lose.
 
-// Win condition:
-// // You get one star if player select the right option;
-// //=> then delete this card from the array - and change to a random card. 
-// //Player wins wen get the total of 7 stars.
-// => then Pop Up your Win
+
+// Time var section ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// let timeVar = document.getElementById("time-var");
+// let timeProgress = document.getElementById('time-var-progress')
+// let i = parseFloat(window.getComputedStyle(timeVar).width
+// function countdown() { 
+//   let interval = setInterval(function () {
+//     timeProgress.style.width = i + "px"; // Set the width of timeVar
+
+//     if (stopTimer == false) {
+//       console.log(i);
+//       i--;
+//     } else { i = i; console.log(i); }
+
+//     // To remove 1 Live.
+//     if (i < 18) {
+//       clearInterval(interval);
+//       livePoints.textContent -= "1" // Live condition.
+//       winCondition = false;
+//       console.log("Blast off!");
+//     }
+
+//     // Change the timer background Color.
+//     if (i === 150) {
+//       timeProgress.style.backgroundColor = 'red'
+//     }
+//     // Reduce the time speed wen the player get Points.
+// //  }, speedTimer);
