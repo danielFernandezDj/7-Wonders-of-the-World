@@ -75,7 +75,7 @@ function initInputSound() {
 
 // Audio Button Main Menu 
 const menuButton = document.getElementById('start-menu-button')
-menuButton.addEventListener('mouseover', () => {
+menuButton.addEventListener('mouseenter', () => {
   const audioMainMenuButton = document.getElementById('audio-hover-button')
   audioMainMenuButton.volume = 0.3;
   audioMainMenuButton.currentTime = 0; // Reset audio to start
@@ -89,7 +89,7 @@ menuButton.addEventListener('click', () => {
   audioClickButton.play()
 })
 
-// How To Play '?' Icon Menu
+// •••••••••••••••••••••••••••••• How To Play '?' Icon Menu ••••••••••••••••••••••••••••••
 // audioFX
 const howToPlayIcon = document.getElementById('how-to-play-icon')
 howToPlayIcon.addEventListener('mouseenter', () => {
@@ -99,7 +99,7 @@ howToPlayIcon.addEventListener('mouseenter', () => {
   howToPlayIcon.play();
 })
 
-// open How to Play menu
+// •••••••••••••••••••••••••••••• open How to Play menu ••••••••••••••••••••••••••••••
 const getHowPlayButton = document.getElementById('how-to-play-icon')
 const getDivHowPlayMenu = document.getElementById('how-play-div')
 const howImageButton = document.getElementById('how-img-button')
@@ -110,6 +110,11 @@ getHowPlayButton.addEventListener('click', () => {
 
 howImageButton.addEventListener('click', () => {
   getDivHowPlayMenu.style.display = "none";
+
+const audioHowToPlay = document.getElementById('audio-hover-button')
+  audioHowToPlay.volume = 0.3;
+  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.play()
 })
 
 // audio of How to play
@@ -127,14 +132,8 @@ howImageButton.addEventListener('mouseenter', () => {
   audioHowToPlay.play()
 })
 
-howImageButton.addEventListener('click', () => {
-  const audioHowToPlay = document.getElementById('audio-hover-button')
-  audioHowToPlay.volume = 0.3;
-  audioHowToPlay.currentTime = 0; // Reset audio to start
-  audioHowToPlay.play()
-})
 
-
+// •••••••••••••••••••••••••••••• Button Election Audio ••••••••••••••••••••••••••••••
 // Audio Wrong election
 function wrongOption() {
   const wrongOptionAudio = document.getElementById('audio-wrong-option')
