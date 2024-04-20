@@ -1,3 +1,4 @@
+
 // Select the card storage section & HUD Button Division.
 const cardStorage = document.getElementById('card')
 const hudButtonDiv = document.getElementById('hud-button-div')
@@ -23,6 +24,7 @@ const textH3 = document.getElementById('h3Q')
 
 // Declare the input variables in the outer scope.
 let inputOne, inputTwo, inputThree, inputFour;
+let buttonArrayInit = false;
 
 function createButtons() {
   inputOne = document.createElement('button');
@@ -35,8 +37,55 @@ function createButtons() {
     input.classList.add('button-style'); // Use classList.add() to add the class.
     input.textContent = 'append';
     applyUniqueColorsToButtons()
+    initInputSound()
+    buttonArrayInit = true
   });
 }
+
+// TODO Audio fx. ≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠
+function initInputSound() {
+  let inputAudio = 0.4;
+
+  inputOne.addEventListener('mouseover', () => {
+    const audioButton = document.getElementById('audio-hover-button')
+    audioButton.volume = inputAudio
+    audioButton.currentTime = 0; // Reset audio to start
+    audioButton.play();
+  })
+  inputTwo.addEventListener('mouseenter', () => {
+    const audioButton = document.getElementById('audio-hover-button')
+    audioButton.volume = inputAudio
+    audioButton.currentTime = 0; // Reset audio to start
+    audioButton.play();
+  })
+  inputThree.addEventListener('mouseenter', () => {
+    const audioButton = document.getElementById('audio-hover-button')
+    audioButton.volume = inputAudio
+    audioButton.currentTime = 0; // Reset audio to start
+    audioButton.play();
+  })
+  inputFour.addEventListener('mouseenter', () => {
+    const audioButton = document.getElementById('audio-hover-button')
+    audioButton.volume = inputAudio
+    audioButton.currentTime = 0; // Reset audio to start
+    audioButton.play();
+  })
+}
+
+function wrongOption() {
+  const wrongOptionAudio = document.getElementById('audio-wrong-option')
+  wrongOptionAudio.volume = 0.2;
+  wrongOptionAudio.currentTime = 0; // Reset audio to start
+  wrongOptionAudio.play();
+}
+
+function correctOption() {
+  const correctOptionAudio = document.getElementById('audio-correct-option')
+  correctOptionAudio.volume = 0.2;
+  correctOptionAudio.currentTime = 0; // Reset audio to start
+  correctOptionAudio.play();
+}
+
 
 // Set a delay timer for 'async' functions.
 function delay(ms) {
@@ -44,9 +93,9 @@ function delay(ms) {
 }
 
 async function removeInputs() {
-    while (hudButtonDiv.firstChild) {
-      hudButtonDiv.removeChild(hudButtonDiv.firstChild)
-    }
+  while (hudButtonDiv.firstChild) {
+    hudButtonDiv.removeChild(hudButtonDiv.firstChild)
+  }
 }
 
 // Random Inputs-Color.
@@ -72,30 +121,35 @@ function applyUniqueColorsToButtons() {
 // ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
 let cardAwaitTimer = 500;
+let musicVolume = 0.3;
 // Time Var variables. > not used!
 // let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
 // let speedTimer = 10;
 
 
-// TODO: Main Menu start game condition.
+// Main Menu start game condition.
 function startMenu() {
   // Get Menu Div's.
   const startMenuContainer = document.getElementById('start-menu-container')
-
-  Audio.play
-
   // Get Buttons and apply a Condition.
   document.getElementById('start-menu-button').addEventListener('click', async () => {
+    // music
+    const audio = document.getElementById("introAudio");
+    audio.volume = musicVolume;
+    audio.play();
+
+    //button audio
+
+    // Delay >>
     console.log("Waiting some seconds...");
     await delay(500); // Waiting some seconds (2000 milliseconds)
-    // todo: Put button audio here!
-
     startMenuContainer.style.display = 'none';
     console.log('Button is press it!')
     selectRandomFunction = arrayCardFunction[Math.floor(Math.random() * arrayCardFunction.length)];
     selectRandomFunction();
   })
 } startMenu()
+
 
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
@@ -112,9 +166,9 @@ async function checkLivePoints() {
 
     // Open the HTML lose file.
     console.log("Waiting some seconds...");
-    await delay(500); // Waiting some seconds (2000 milliseconds)
     // todo: Put button audio here!
 
+    await delay(500); // Waiting some seconds (2000 milliseconds)
     window.open('../assets/html/endMenu.html', '_self')
   }
 }
@@ -126,9 +180,9 @@ async function startAfterDelay() {
   console.log("2 seconds have passed. Starting now!");
   // Put your code here that you want to execute after the delay
 }
-new Audio();
 
-startAfterDelay();
+
+
 
 function PlayNewAudio(urlAudio) {
   playAudio = new Audio(urlAudio); // 'path/to/your/audio/file.mp3'
@@ -201,19 +255,19 @@ function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   // Add Country Name to each input. // <<<<<<<<<<<<<<<<<<<<<<<<<
   inputOne.textContent = 'Egypt';
   inputTwo.textContent = 'Vegas';
-  inputThree.textContent = 'India';
+  inputThree.textContent = 'India';    
   inputFour.textContent = 'Pakistan';
 
   // Remove Point Input & change to other card.
-  inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
-  inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
-  inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; removePointSolution(Egypt) })
+  inputTwo.addEventListener('click', () => { imgEgypt.style.display = "none"; wrongOption(); removePointSolution(Egypt) })
+  inputThree.addEventListener('click', () => { imgEgypt.style.display = "none"; wrongOption(); removePointSolution(Egypt) })
+  inputFour.addEventListener('click', () => { imgEgypt.style.display = "none"; wrongOption(); removePointSolution(Egypt) })
 
   // Increase Star-Point condition.
   let livePlusOne = 0
 
   inputOne.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -258,14 +312,14 @@ function Iraq() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
 
   // Remove Point Input & change to other card.
-  inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
-  inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; removePointSolution(Iraq) })
+  inputOne.addEventListener('click', () => { imgIraq.style.display = "none"; wrongOption(); removePointSolution(Iraq) })
+  inputTwo.addEventListener('click', () => { imgIraq.style.display = "none"; wrongOption(); removePointSolution(Iraq) })
+  inputFour.addEventListener('click', () => { imgIraq.style.display = "none"; wrongOption(); removePointSolution(Iraq) })
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
   inputThree.addEventListener('click', async () => {
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Iraq)
 
@@ -308,16 +362,15 @@ function Greece() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   inputThree.textContent = 'Romania';
   inputFour.textContent = 'Libya';
 
-
   // Remove Point Input & change to other card.
-  inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
-  inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; removePointSolution(Greece) })
+  inputOne.addEventListener('click', () => { imgGreece.style.display = "none"; wrongOption(); removePointSolution(Greece) })
+  inputThree.addEventListener('click', () => { imgGreece.style.display = "none"; wrongOption(); removePointSolution(Greece) })
+  inputFour.addEventListener('click', () => { imgGreece.style.display = "none"; wrongOption(); removePointSolution(Greece) })
 
-  // todo Increase Star-Point condition.
+  // Increase Star-Point condition.
   let livePlusOne = 0
   inputTwo.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Greece) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -362,14 +415,14 @@ function Turkey() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
 
   // Remove Point Input & change to other card.
-  inputOne.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
-  inputThree.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
-  inputFour.addEventListener('click', () => { imgTurkey.style.display = "none"; removePointSolution(Turkey) })
+  inputOne.addEventListener('click', () => { imgTurkey.style.display = "none"; wrongOption(); removePointSolution(Turkey) })
+  inputThree.addEventListener('click', () => { imgTurkey.style.display = "none"; wrongOption(); removePointSolution(Turkey) })
+  inputFour.addEventListener('click', () => { imgTurkey.style.display = "none"; wrongOption(); removePointSolution(Turkey) })
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
   inputTwo.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Turkey) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -414,14 +467,14 @@ function Turkey2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
 
   // Remove Point Input & change to other card.
-  inputTwo.addEventListener('click', () => { imgTurkey2.style.display = "none"; removePointSolution(Turkey2) }) // <<
-  inputThree.addEventListener('click', () => { imgTurkey2.style.display = "none"; removePointSolution(Turkey2) }) // <<
-  inputFour.addEventListener('click', () => { imgTurkey2.style.display = "none"; removePointSolution(Turkey2) }) // <<
+  inputTwo.addEventListener('click', () => { imgTurkey2.style.display = "none"; wrongOption(); removePointSolution(Turkey2) }) // <<
+  inputThree.addEventListener('click', () => { imgTurkey2.style.display = "none"; wrongOption(); removePointSolution(Turkey2) }) // <<
+  inputFour.addEventListener('click', () => { imgTurkey2.style.display = "none"; wrongOption(); removePointSolution(Turkey2) }) // <<
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
   inputOne.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-    stopTimer = true;
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Turkey2) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -466,14 +519,14 @@ function Greece2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
 
 
   // Remove Point Input & change to other card.
-  inputOne.addEventListener('click', () => { imgGreece2.style.display = "none"; removePointSolution(Greece2) }) // << img
-  inputTwo.addEventListener('click', () => { imgGreece2.style.display = "none"; removePointSolution(Greece2) }) // << img
-  inputThree.addEventListener('click', () => { imgGreece2.style.display = "none"; removePointSolution(Greece2) }) // << img
+  inputOne.addEventListener('click', () => { imgGreece2.style.display = "none"; wrongOption(); removePointSolution(Greece2) }) // << img
+  inputTwo.addEventListener('click', () => { imgGreece2.style.display = "none"; wrongOption(); removePointSolution(Greece2) }) // << img
+  inputThree.addEventListener('click', () => { imgGreece2.style.display = "none"; wrongOption(); removePointSolution(Greece2) }) // << img
 
   // todo Increase Star-Point condition.
   let livePlusOne = 0
   inputFour.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Greece2) // <<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -517,14 +570,14 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   inputFour.textContent = 'Egypt';
 
   // Remove Point Input & change to other card.
-  inputOne.addEventListener('click', () => { imgEgypt2.style.display = "none"; removePointSolution(Egypt2) }) // << img.
-  inputTwo.addEventListener('click', () => { imgEgypt2.style.display = "none"; removePointSolution(Egypt2) }) // << img.
-  inputThree.addEventListener('click', () => { imgEgypt2.style.display = "none"; removePointSolution(Egypt2) }) // << img.
+  inputOne.addEventListener('click', () => { imgEgypt2.style.display = "none"; wrongOption(); removePointSolution(Egypt2) }) // << img.
+  inputTwo.addEventListener('click', () => { imgEgypt2.style.display = "none"; wrongOption(); removePointSolution(Egypt2) }) // << img.
+  inputThree.addEventListener('click', () => { imgEgypt2.style.display = "none"; wrongOption(); removePointSolution(Egypt2) }) // << img.
 
   // Increase Star-Point condition.
   let livePlusOne = 0
   inputFour.addEventListener('click', async () => { // <<<<<<<<<<<<<<<<<<<<<<<<<
-
+    correctOption() // Audio
     removeInputs() // Remove the inputs.
     removeCardFromArray(Egypt2) // <<<<<<<<<<<<<<<<<<<<<<<<<
 

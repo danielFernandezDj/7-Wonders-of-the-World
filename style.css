@@ -88,7 +88,7 @@ body {
     transition-duration: 0.5s;
 }
 
-#start-menu-button:hover {
+#start-menu-button:hover{
     transform: scale(2);
 }
 
