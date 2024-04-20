@@ -89,7 +89,7 @@ menuButton.addEventListener('click', () => {
   audioClickButton.play()
 })
 
-// •••••••••••••••••••••••••••••• How To Play '?' Icon Menu ••••••••••••••••••••••••••••••
+// •••••••••••••••••••••••••••••• How To Play '?' Icon ••••••••••••••••••••••••••••••
 // audioFX
 const howToPlayIcon = document.getElementById('how-to-play-icon')
 howToPlayIcon.addEventListener('mouseenter', () => {
@@ -111,7 +111,7 @@ getHowPlayButton.addEventListener('click', () => {
 howImageButton.addEventListener('click', () => {
   getDivHowPlayMenu.style.display = "none";
 
-const audioHowToPlay = document.getElementById('audio-hover-button')
+  const audioHowToPlay = document.getElementById('audio-hover-button')
   audioHowToPlay.volume = 0.3;
   audioHowToPlay.currentTime = 0; // Reset audio to start
   audioHowToPlay.play()
