@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>End Menu</title>
     <script src="https://kit.fontawesome.com/3b2e7a2e79.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/endMenu.css">
+    <link rel="stylesheet" href="../css/endMenu.css">
 </head>
 
 <body>
@@ -20,16 +20,16 @@
     <!-- --------------------------- Audio & FX --------------------------- -->
     <section>
         <!-- Calm Water -->
-        <audio id="audio-Water" src="assets/fx-sound/calm water sound fx.mp3"></audio>
+        <audio id="audio-Water" src="/assets/fx-sound/calm water sound fx.mp3"></audio>
 
         <!-- Won Game -->
-        <audio id="audio-won" src="assets/fx-sound/won the game html sound fx.wav"></audio>
+        <audio id="audio-won" src="/assets/fx-sound/won the game html sound fx.wav"></audio>
 
         <!-- Fireworks  -->
-        <audio id="audio-fireworks" src="assets/fx-sound/fireworks sound fx - won game.mp3"></audio>
+        <audio id="audio-fireworks" src="/assets/fx-sound/fireworks sound fx - won game.mp3"></audio>
 
         <!-- Main Menu Button  -->
-        <audio id="audio-hover-button" src="assets/fx-sound/over a button sound fx.wav"></audio>
+        <audio id="audio-hover-button" src="/assets/fx-sound/over a button sound fx.wav"></audio>
     </section>
 
     <!-- --------------------------- Main Section --------------------------- -->
@@ -46,6 +46,9 @@
             src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3JveDlrZGs5azlmM3NxZHcxM2xuajBpdHluazRhMG5keWN1M3g0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ObNTw8Uzwy6KQ/giphy.gif"
             alt="Star GIF">
 
+        <!-- Intro IMG -->
+        <img id="menu-img" src="../Images/intro-image-1.png" alt="intro image">
+
         <h1>The 7 Wonders of the World</h1>
         <p style="color: rgb(78, 204, 105); filter: contrast(130%);">
             Good Job <i class="fa-solid fa-face-laugh-beam fa-spin-pulse"></i> <br>
@@ -57,7 +60,6 @@
                 Try Again <i class="fa-solid fa-dice fa-fade"></i>
             </button>
         </div>
-        <img id="menu-img" src="assets/Images/intro-image-1.png" alt="">
     </section>
 
     <!-- --------------------------- JS Script --------------------------- -->
@@ -74,7 +76,7 @@
             // todo: Put button audio here!
 
             // Open new Main html file.
-            window.open('index.html', '_self')
+            window.open('../../index.html', '_self')
         })
 
         // --------------------------- Audio & FX --------------------------- 
