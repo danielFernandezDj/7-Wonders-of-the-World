@@ -74,7 +74,7 @@ function initInputSound() {
 }
 
 // Audio Button Main Menu 
-let menuButton = document.getElementById('start-menu-button')
+const menuButton = document.getElementById('start-menu-button')
 menuButton.addEventListener('mouseover', () => {
   const audioMainMenuButton = document.getElementById('audio-hover-button')
   audioMainMenuButton.volume = 0.3;
@@ -88,6 +88,52 @@ menuButton.addEventListener('click', () => {
   audioClickButton.currentTime = 0; // Reset audio to start
   audioClickButton.play()
 })
+
+// How To Play '?' Icon Menu
+// audioFX
+const howToPlayIcon = document.getElementById('how-to-play-icon')
+howToPlayIcon.addEventListener('mouseenter', () => {
+  const howToPlayIcon = document.getElementById('audio-hover-button')
+  howToPlayIcon.volume = 0.3;
+  howToPlayIcon.currentTime = 0; // Reset audio to start
+  howToPlayIcon.play();
+})
+
+// open How to Play menu
+const getHowPlayButton = document.getElementById('how-to-play-icon')
+const getDivHowPlayMenu = document.getElementById('how-play-div')
+const howImageButton = document.getElementById('how-img-button')
+
+getHowPlayButton.addEventListener('click', () => {
+  getDivHowPlayMenu.style.display = "block";
+})
+
+howImageButton.addEventListener('click', () => {
+  getDivHowPlayMenu.style.display = "none";
+})
+
+// audio of How to play
+getHowPlayButton.addEventListener('click', () => {
+  const audioHowToPlay = document.getElementById('audio-hover-button')
+  audioHowToPlay.volume = 0.3;
+  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.play()
+})
+
+howImageButton.addEventListener('mouseenter', () => {
+  const audioHowToPlay = document.getElementById('audio-hover-button')
+  audioHowToPlay.volume = 0.3;
+  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.play()
+})
+
+howImageButton.addEventListener('click', () => {
+  const audioHowToPlay = document.getElementById('audio-hover-button')
+  audioHowToPlay.volume = 0.3;
+  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.play()
+})
+
 
 // Audio Wrong election
 function wrongOption() {
@@ -104,6 +150,7 @@ function correctOption() {
   correctOptionAudio.currentTime = 0; // Reset audio to start
   correctOptionAudio.play();
 }
+
 
 // ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
