@@ -152,7 +152,7 @@ function correctOption() {
 }
 
 
-// ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// •••••••••••••••••••••••••••••• Variables. ••••••••••••••••••••••••••••••
 let winCondition = false; // console.log(winCondition)
 let cardAwaitTimer = 500;
 let musicVolume = 0.3;
@@ -160,17 +160,20 @@ let musicVolume = 0.3;
 // let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
 // let speedTimer = 10;
 
+
 // Set a delay timer for 'async' functions.
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+// •••••••••••••••••••••••••••••• Delay Func ••••••••••••••••••••••••••••••
 async function removeInputs() {
   while (hudButtonDiv.firstChild) {
     hudButtonDiv.removeChild(hudButtonDiv.firstChild)
   }
 }
 
+// •••••••••••••••••••••••••••••• Input Color ••••••••••••••••••••••••••••••
 // Random Inputs-Color.
 function shuffleArray(array) {
   for (let i = array.length - 1; i > 0; i--) {
@@ -192,7 +195,7 @@ function applyUniqueColorsToButtons() {
 }
 
 
-// Main Menu start game condition.
+// •••••••••••••••••••••••••••••• Main Menu ••••••••••••••••••••••••••••••
 function startMenu() {
   // Get Menu Div's.
   const startMenuContainer = document.getElementById('start-menu-container')
@@ -216,6 +219,7 @@ function startMenu() {
 } startMenu()
 
 
+//  •••••••••••••••••••••••••••••• Game Play Section ••••••••••••••••••••••••••••••
 // Live Points selection.
 let livePoints = document.getElementById('menu-h2-live')
 let startPoint = document.getElementById('point-number')
@@ -246,15 +250,12 @@ async function startAfterDelay() {
   // Put your code here that you want to execute after the delay
 }
 
-
-
-
 function PlayNewAudio(urlAudio) {
   playAudio = new Audio(urlAudio); // 'path/to/your/audio/file.mp3'
   playAudio.play()
 }
 
-//  Remove 'card' from the array.  ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// •••••••••••••••••••••••••••••• Remove 'card' from the array ••••••••••••••••••••••••••••••
 async function removeCardFromArray(indexCard) {
   // The card name goes in the 'indexCard'
   let index = arrayCardFunction.indexOf(indexCard);
@@ -277,7 +278,7 @@ async function removeCardFromArray(indexCard) {
   }
 }
 
-// Remove Live Point and change to the next Card.
+// Remove Live Point and change to the next Card. 
 function removePointSolution(indexCard) {
   // console.log(`you lose on Star point`);
 
@@ -301,7 +302,7 @@ function removePointSolution(indexCard) {
   console.log(`Array Function has = ${arrayCardFunction.length} functions inside!`)
 }
 
-// GamePlay Card ••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+// •••••••••••••••••••••••••••••• GamePlay Card ••••••••••••••••••••••••••••••
 // ! Card 1-Egypt ••••••••••••••••••••••••••••••••••••
 function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   console.log('Is in Egypt'); // checking if we are in this function.
