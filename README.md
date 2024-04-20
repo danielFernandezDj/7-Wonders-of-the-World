@@ -35,7 +35,7 @@ Welcome to "The 7 Wonders of the World" game!
 
 ### Play the Game
 
-[Play Now](#) (Add a link to your deployed game if available)
+[Play Now](#) ([Add a link to your deployed game if available](https://danielfernandezdj.github.io/7-Wonders-of-the-World.github.io-Public/))
 
 ### License
 

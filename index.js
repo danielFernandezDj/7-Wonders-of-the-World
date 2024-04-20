@@ -22,7 +22,6 @@ cardStorage.appendChild(imgEgypt2)
 // Select Q&A Text.
 const textH3 = document.getElementById('h3Q')
 
-// Declare the input variables in the outer scope.
 let inputOne, inputTwo, inputThree, inputFour;
 let buttonArrayInit = false;
 
@@ -90,7 +89,6 @@ menuButton.addEventListener('click', () => {
 })
 
 // •••••••••••••••••••••••••••••• How To Play '?' Icon ••••••••••••••••••••••••••••••
-// audioFX
 const howToPlayIcon = document.getElementById('how-to-play-icon')
 howToPlayIcon.addEventListener('mouseenter', () => {
   const howToPlayIcon = document.getElementById('audio-hover-button')
@@ -165,7 +163,7 @@ function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-// •••••••••••••••••••••••••••••• Delay Func ••••••••••••••••••••••••••••••
+// •••••••••••••••••••••••••••••• Delay Function ••••••••••••••••••••••••••••••
 async function removeInputs() {
   while (hudButtonDiv.firstChild) {
     hudButtonDiv.removeChild(hudButtonDiv.firstChild)
