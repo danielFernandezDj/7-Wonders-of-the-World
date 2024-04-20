@@ -237,7 +237,7 @@ async function checkLivePoints() {
     // todo: Put button audio here!
 
     await delay(500); // Waiting some seconds (2000 milliseconds)
-    window.open('../assets/html/endMenu.html', '_self')
+    window.open('assets/html/endMenu.html', '_self')
   }
 }
 
@@ -272,7 +272,7 @@ async function removeCardFromArray(indexCard) {
       await delay(500); // Waiting some seconds (2000 milliseconds)
       // todo: Put button audio here!
 
-      window.open('../assets/html/winMenu.html', '_self')
+      window.open('assets/html/winMenu.html', '_self')
     }
   }
 }
@@ -442,8 +442,6 @@ function Greece() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     if (arrayCardFunction.length === 0) {
       console.log("Waiting some seconds...");
       await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
-      // todo: Put the 'Won' audio here!
-
     }
 
     // if (livePlusOne === 0) {
@@ -649,8 +647,6 @@ function Egypt2() { // <<<<<<<<<<<<<<<<<<<<<<<<<
     if (arrayCardFunction.length === 0) {
       console.log("Waiting some seconds...");
       await delay(cardAwaitTimer); // Waiting some seconds (2000 milliseconds)
-      // todo: Put the 'Won' audio here!
-
     }
 
     // if (livePlusOne === 0) {
