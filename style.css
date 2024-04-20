@@ -85,7 +85,7 @@ body {
     width: 100px;
     height: 50px;
     transform: scale(1.8);
-    transition-duration: 0.5s;
+    transition-duration: 0.1s;
 }
 
 #start-menu-button:hover{
@@ -93,7 +93,7 @@ body {
 }
 
 #start-menu-button:active {
-    transform: scale(1.8);
+    transform: scale(1.9);
 }
 
 

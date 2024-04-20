@@ -42,7 +42,8 @@ function createButtons() {
   });
 }
 
-// TODO Audio fx. ≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠
+// π --------------------------- Audio & FX --------------------------- π
+// Audio Over Inputs 
 function initInputSound() {
   let inputAudio = 0.4;
 
@@ -72,6 +73,23 @@ function initInputSound() {
   })
 }
 
+// Audio Button Main Menu 
+let menuButton = document.getElementById('start-menu-button')
+menuButton.addEventListener('mouseover', () => {
+  const audioMainMenuButton = document.getElementById('audio-hover-button')
+  audioMainMenuButton.volume = 0.3;
+  audioMainMenuButton.currentTime = 0; // Reset audio to start
+  audioMainMenuButton.play();
+})
+
+menuButton.addEventListener('click', () => {
+  const audioClickButton = document.getElementById('audio-hover-button')
+  audioClickButton.volume = 0.3;
+  audioClickButton.currentTime = 0; // Reset audio to start
+  audioClickButton.play()
+})
+
+// Audio Wrong election
 function wrongOption() {
   const wrongOptionAudio = document.getElementById('audio-wrong-option')
   wrongOptionAudio.volume = 0.2;
@@ -79,6 +97,7 @@ function wrongOption() {
   wrongOptionAudio.play();
 }
 
+// Audio Correct election
 function correctOption() {
   const correctOptionAudio = document.getElementById('audio-correct-option')
   correctOptionAudio.volume = 0.2;
@@ -86,6 +105,13 @@ function correctOption() {
   correctOptionAudio.play();
 }
 
+// ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
+let winCondition = false; // console.log(winCondition)
+let cardAwaitTimer = 500;
+let musicVolume = 0.3;
+// Time Var variables. > not used!
+// let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
+// let speedTimer = 10;
 
 // Set a delay timer for 'async' functions.
 function delay(ms) {
@@ -117,14 +143,6 @@ function applyUniqueColorsToButtons() {
     button.style.backgroundColor = shuffledColors[index % shuffledColors.length];
   });
 }
-
-// ! Variables. •••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••
-let winCondition = false; // console.log(winCondition)
-let cardAwaitTimer = 500;
-let musicVolume = 0.3;
-// Time Var variables. > not used!
-// let stopTimer = false; console.log(`Stop timer is = ${stopTimer}!`)
-// let speedTimer = 10;
 
 
 // Main Menu start game condition.
@@ -255,7 +273,7 @@ function Egypt() { // <<<<<<<<<<<<<<<<<<<<<<<<<
   // Add Country Name to each input. // <<<<<<<<<<<<<<<<<<<<<<<<<
   inputOne.textContent = 'Egypt';
   inputTwo.textContent = 'Vegas';
-  inputThree.textContent = 'India';    
+  inputThree.textContent = 'India';
   inputFour.textContent = 'Pakistan';
 
   // Remove Point Input & change to other card.
