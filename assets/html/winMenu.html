@@ -19,7 +19,7 @@
     <!-- --------------------------- Audio & FX --------------------------- -->
     <section>
         <audio id="audio-Water" src="../fx-sound/calm water sound fx.mp3"></audio>
-        <audio id="audio-won" src="../fx-sound/won the game html sound fx.wav"></audio>
+    <audio id="audio-won" src="../fx-sound/won the game html sound fx.wav"></audio>
         <audio id="audio-fireworks" src="../fx-sound/fireworks sound fx - won game.mp3"></audio>
         <audio id="audio-hover-button" src="../fx-sound/over a button sound fx.wav"></audio>
     </section>
@@ -70,6 +70,7 @@
         const audioWon = document.getElementById('audio-won')
         audioWon.volume = 0.3;
         audioWon.currentTime = 0; 
+        audioWon.play();
 
         const audioFireworks = document.getElementById('audio-fireworks')
         audioFireworks.volume = 0.09;
