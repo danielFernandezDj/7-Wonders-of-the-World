@@ -12,42 +12,28 @@
 
 <body>
     <!-- --------------------------- Visual FX --------------------------- -->
-    <!-- Water -->
-    <img style="position: fixed; transform: scale(2); opacity: 10%; filter: contrast(120%); 
-    width: 100%; height: 100%; filter: hue-rotate(280deg);"
+    <img style="position: fixed; transform: scale(2); opacity: 10%; filter: contrast(120%); width: 100%; height: 100%; filter: hue-rotate(280deg);"
         src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExYjhsc3IyNWQyNHNteGx4ZXU4emJtYzNxa3lxdTd6ODc5YWNjY2JlNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/KZFrf9JusXzmpnPsT6/giphy.webp"
         alt="Background Water FX">
 
     <!-- --------------------------- Audio & FX --------------------------- -->
     <section>
-        <!-- Calm Water -->
         <audio id="audio-Water" src="../fx-sound/calm water sound fx.mp3"></audio>
-
-        <!-- Won Game -->
         <audio id="audio-won" src="../fx-sound/won the game html sound fx.wav"></audio>
-
-        <!-- Fireworks  -->
         <audio id="audio-fireworks" src="../fx-sound/fireworks sound fx - won game.mp3"></audio>
-
-        <!-- Main Menu Button  -->
         <audio id="audio-hover-button" src="../fx-sound/over a button sound fx.wav"></audio>
     </section>
 
     <!-- --------------------------- Main Section --------------------------- -->
     <section id="start-menu-container">
-        <!-- Fireworks GIF -->
-        <img style="position: absolute; opacity: 50%; width: 800px; 
-        z-index: 10; transform: translate(-30px, -350px);"
+        <img style="position: absolute; opacity: 50%; width: 800px; z-index: 10; transform: translate(-30px, -350px);"
             src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGgwem9xbzd2NWwwMHhnNzkwcHA0Y2o0b2Y5Znk2d2J5Nmw2aXBpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/3tJdmW1KTOY3vWRirM/giphy.gif"
             alt="Fireworks GIF">
 
-        <!-- Star GIF -->
-        <img style="position: absolute; transform: scale(0.8); filter: brightness(90%);
-        z-index: 10; transform: translate(0px, 280px);"
+        <img style="position: absolute; transform: scale(0.8); filter: brightness(90%); z-index: 10; transform: translate(0px, 280px);"
             src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExb3JveDlrZGs5azlmM3NxZHcxM2xuajBpdHluazRhMG5keWN1M3g0MCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ObNTw8Uzwy6KQ/giphy.gif"
-            alt="Star GIF">
+            alt="Dancing Star GIF">
 
-        <!-- Intro IMG -->
         <img id="menu-img" src="../Images/intro-image-1.png" alt="intro image">
 
         <h1>The 7 Wonders of the World</h1>
@@ -65,53 +51,43 @@
 
     <!-- --------------------------- JS Script --------------------------- -->
     <script>
-        // Set a timer for 'async' functions.
         function delay(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
 
-        // Select the button and apply the condition.
         document.getElementById('menu-button').addEventListener('click', async () => {
             console.log("Waiting some seconds...");
-            await delay(500); // Waiting some seconds (2000 milliseconds)
-            // todo: Put button audio here!
-
-            // Open new Main html file.
+            await delay(500); 
             window.open('../../index.html', '_self')
         })
 
         // --------------------------- Audio & FX --------------------------- 
-        // Audio Water.
         const audioWater = document.getElementById('audio-Water')
         audioWater.volume = 0.3;
-        audioWater.currentTime = 0; // Reset audio to start
+        audioWater.currentTime = 0;
         audioWater.play();
 
-        // Audio Won.
         const audioWon = document.getElementById('audio-won')
         audioWon.volume = 0.3;
-        audioWon.currentTime = 0; // Reset audio to start
-        audioWon.play();
+        audioWon.currentTime = 0; 
 
-        // Audio Fireworks.
         const audioFireworks = document.getElementById('audio-fireworks')
         audioFireworks.volume = 0.09;
-        audioFireworks.currentTime = 0; // Reset audio to start
+        audioFireworks.currentTime = 0; 
         audioFireworks.play();
 
-        // Button Main Menu 
         let menuButton = document.getElementById('menu-button')
         menuButton.addEventListener('mouseover', () => {
             const audioOverButton = document.getElementById('audio-hover-button')
             audioOverButton.volume = 0.3;
-            audioOverButton.currentTime = 0; // Reset audio to start
+            audioOverButton.currentTime = 0; 
             audioOverButton.play();
         })
 
         menuButton.addEventListener('click', () => {
             const audioClickButton = document.getElementById('audio-hover-button')
             audioClickButton.volume = 0.3;
-            audioClickButton.currentTime = 0; // Reset audio to start
+            audioClickButton.currentTime = 0; 
             audioClickButton.play()
         }) 
     </script>
