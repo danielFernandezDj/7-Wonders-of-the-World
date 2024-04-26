@@ -115,7 +115,7 @@ howImageButton.addEventListener('click', () => {
 
   const audioHowToPlay = document.getElementById('audio-hover-button')
   audioHowToPlay.volume = 0.3;
-  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.currentTime = 0; 
   audioHowToPlay.play()
 })
 
@@ -123,14 +123,14 @@ howImageButton.addEventListener('click', () => {
 getHowPlayButton.addEventListener('click', () => {
   const audioHowToPlay = document.getElementById('audio-hover-button')
   audioHowToPlay.volume = 0.3;
-  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.currentTime = 0; 
   audioHowToPlay.play()
 })
 
 howImageButton.addEventListener('mouseenter', () => {
   const audioHowToPlay = document.getElementById('audio-hover-button')
   audioHowToPlay.volume = 0.3;
-  audioHowToPlay.currentTime = 0; // Reset audio to start
+  audioHowToPlay.currentTime = 0; 
   audioHowToPlay.play()
 })
 
@@ -139,14 +139,14 @@ howImageButton.addEventListener('mouseenter', () => {
 function wrongOption() {
   const wrongOptionAudio = document.getElementById('audio-wrong-option')
   wrongOptionAudio.volume = 0.2;
-  wrongOptionAudio.currentTime = 0; // Reset audio to start
+  wrongOptionAudio.currentTime = 0; 
   wrongOptionAudio.play();
 }
 
 function correctOption() {
   const correctOptionAudio = document.getElementById('audio-correct-option')
   correctOptionAudio.volume = 0.2;
-  correctOptionAudio.currentTime = 0; // Reset audio to start
+  correctOptionAudio.currentTime = 0; 
   correctOptionAudio.play();
 }
 
@@ -227,11 +227,6 @@ async function checkLivePoints() {
     await delay(500);
     window.open('assets/html/endMenu.html', '_self')
   }
-}
-
-function PlayNewAudio(urlAudio) {
-  playAudio = new Audio(urlAudio);
-  playAudio.play()
 }
 
 // •••••••••••••••••••••••••••••• Remove 'card' from the array ••••••••••••••••••••••••••••••
